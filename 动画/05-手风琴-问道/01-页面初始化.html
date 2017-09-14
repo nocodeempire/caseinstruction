@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    #box {
+      height: 230px;
+      width: 1090px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #box li {
+      height: 230px;
+      width: 626px;
+      position: absolute;
+    }
+    
+    #box .title {
+      height: 230px;
+      width: 116px;
+      float: left;
+    }
+    
+    #box .content {
+      height: 230px;
+      width: 510px;
+      float: left;
+    }
+  
+  </style>
+</head>
+<body>
+
+<div id="box">
+  <ul>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+    <li>
+      <div class="title"></div>
+      <div class="content"></div>
+    </li>
+  </ul>
+</div>
+
+<script src="animate.js"></script>
+<script>
+  var box = document.getElementById("box");
+  var lis = box.children[0].children;
+  for (var i = 0; i < lis.length; i++) {
+    lis[i].index = i;
+    
+    //设置背景图
+    lis[i].children[0].style.backgroundImage = "url(images/img" + (i + 1) + ".jpg)";
+    lis[i].children[1].style.backgroundImage = "url(images/pic" + (i + 1) + ".jpg)";
+    
+    
+    //初始化每一个li的left值
+    if (i == 0) {
+      lis[i].style.left = 0;
+    } else {
+      lis[i].style.left = 116 * i + 510 + "px";
+    }
+    
+    
+    //给li注册鼠标经过事件
+    lis[i].onmouseover = function () {
+      for (var i = 0; i < lis.length; i++) {
+        if (i <= this.index) {
+          animate(lis[i], {left: 116 * i});
+        } else {
+          animate(lis[i], {left: 116 * i + 510});
+        }
+      }
+    };
+    
+    
+  }
+  
+  
+  
+//  var count = 0;
+//  setInterval(function () {
+//    count++;
+//    if(count == 5){
+//      count = 0;
+//    }
+//    lis[count].onmouseover();
+//  }, 2000);
+</script>
+
+</body>
+</html>

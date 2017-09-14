@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      width: 1000px;
+      height: 600px;
+      border: 2px solid #ff9258;
+      margin: 20px auto;
+      position: relative;
+    }
+
+    #box div {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<script>
+  var box = document.getElementById("box");
+  var divs = box.getElementsByTagName("div");
+
+  var colors = ["red", "green", "blue", "pink", "hotpink", "yellowgreen", "#ff9258", "#ccc", "deeppink", "cyan"];
+
+
+  var zIndex = 0;
+
+  for(var i = 0; i < divs.length; i++) {
+    //随机颜色
+    var randomColor = parseInt(Math.random() * colors.length);
+    divs[i].style.backgroundColor = colors[i];
+
+    //随机位置
+    //0-800
+    var x = parseInt(Math.random() * 801);
+    divs[i].style.left = x + "px";
+    var y = parseInt(Math.random() * 401);
+    divs[i].style.top = y + "px";
+
+
+    //注册点击事件
+    divs[i].onclick = function () {
+      this.style.zIndex = ++zIndex;
+    }
+
+
+  }
+
+
+
+</script>
+</body>
+</html>

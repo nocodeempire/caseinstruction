@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        	 .box {
+        	 	 width: 200px;
+        	 	 height: 200px;
+        	 	 background-color: pink;
+			
+				 /* 调用动画集 */
+			     /* animation: move 1s infinite linear alternate; */
+
+
+			     animation: move 5s linear;
+        	 }
+
+
+        	 @keyframes move {
+        	 	 0% {
+					transform: translateX(0px);
+					width: 200px;
+					height: 200px;
+        	 	 }
+
+        	 	 40% {
+					 width: 300px;
+					 height: 300px;
+        	 	 }
+
+        	 	 80% {
+					 width: 200px;
+					 height: 200px;
+					 transform: translateX(100px);
+        	 	 }
+
+        	 	 100% {
+					transform: translateX(0px);
+					width: 200px;
+					height: 200px;
+        	 	 }
+        	 }
+			 /* 定义动画集 */
+        	 @keyframes  move1 {
+        	 	 from {
+        	 	 	/* 动画的开始状态 */
+        	 	 	/* 位置开始状态 */
+        	 	 	transform: translateX(0px);
+        	 	 }
+        	 	 to {
+        	 	 	/* 动画的结束状态 */
+        	 	 	/* 位置结束状态 */
+        	 	 	transform: translateX(300px);
+        	 	 }
+        	 }
+        </style>
+    </head>
+    <body>
+
+    	 <div class="box"></div>
+    </body>
+</html>

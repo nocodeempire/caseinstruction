@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .cc {
+            padding: 5px;
+            border: 1px solid red;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="cc"><img src="images/P_000.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_001.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_002.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_003.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_004.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_005.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_006.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_007.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_008.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_009.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_010.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_011.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_012.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_013.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_014.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_015.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_016.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_017.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_018.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_019.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_020.jpg" alt=""></div>
+</div>
+
+<script>
+    window.onload = function () {
+        //1. 确定第一行有多少列，对于第一列来说，非常的简单，直接浮动就行了
+        //列数 = 页面可视宽度/图片的宽度
+        var box = document.getElementById("box");
+        var divs = box.children;
+        var imgWidth = divs[0].offsetWidth;
+        var pageWidth = client().width;
+        var columns = Math.floor(pageWidth / imgWidth);
+        console.log(columns);
+
+
+        //2. 将除了第一列剩下的图片通过定位的方式，一张一张的添加到最小列
+
+    }
+
+
+    function client() {
+
+        return {
+            width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+            height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+        }
+    }
+</script>
+
+</body>
+</html>

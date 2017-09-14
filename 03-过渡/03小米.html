@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        	html,body {
+        		 margin: 0;
+        		 padding: 0;
+        		 width: 100%;
+        		 height: 100%;
+        	}
+
+        	.box {
+        		 width: 100%;
+        		 height: 100%;
+        		 background-color: #eee;
+        	}
+
+        	.l_box {
+        		 float: left;
+        		 width: 234px;
+        		 height: 300px;
+        		 margin: 100px 50px;
+        		 cursor: pointer;
+        		 transition: all 1s linear;
+        	}
+
+        	.l_box:hover {
+        		box-shadow: -1px -1px 15px #000;
+        		margin-top: 90px;
+        	}
+
+        	.r_box {
+        		 width: 234px;
+        		 height: 300px;
+        		 float: left;
+        		 margin: 100px 0px;
+        		 background-color: #fff;
+        		 text-align: center;
+        		 position: relative;
+        	}
+
+        	.cover {
+        		position: absolute;
+        		bottom: 0;
+        		height: 0px;
+        		width: 234px;
+        		background-color: orange;
+        		transition: all 3s linear;
+        	}
+
+        	.r_box:hover .cover {
+        		height: 120px;
+        	}
+        </style>
+    </head>
+    <body>
+    	 <div class="box">
+    	 	
+    	 	 <div class="l_box">
+    	 	 	 <img src="img/1.jpg" alt="">
+    	 	 </div>
+    	 	 <div class="r_box">
+    	 	 	 <img src="img/2.jpg" alt="">
+    	 	 	 <div class="cover"></div>
+    	 	 </div>
+    	 </div>
+    </body>
+</html>

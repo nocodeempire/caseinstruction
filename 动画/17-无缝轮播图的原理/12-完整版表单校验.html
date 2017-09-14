@@ -1,0 +1,79 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style type="text/css">
+  body {
+    background: #ccc;
+  }
+  
+  label {
+    width: 40px;
+    display: inline-block;
+  }
+  
+  span {
+    color: red;
+  }
+  
+  .container {
+    margin: 100px auto;
+    width: 400px;
+    padding: 50px;
+    line-height: 40px;
+    border: 1px solid #999;
+    background: #efefef;
+  }
+  
+  span {
+    margin-left: 30px;
+    font-size: 12px;
+  }
+  
+</style>
+<body>
+<div class="container">
+  <label>Q Q</label><input type="text" id="inp1"><span></span><br/>
+  <label>手机</label><input type="text" id="inp2"><span></span><br/>
+  <label>邮箱</label><input type="text" id="inp3"><span></span><br/>
+  <label>座机</label><input type="text" id="inp4"><span></span><br/>
+  <label>姓名</label><input type="text" id="inp5"><span></span><br/>
+</div>
+
+<script>
+  
+  function checkReg(element, reg) {
+    element.onblur = function () {
+      //获取内容
+      var content = this.value;
+      if(reg.test(content)){
+        this.nextElementSibling.innerHTML = "合法";
+        this.nextElementSibling.style.color = "green";
+      }else {
+        this.nextElementSibling.innerHTML = "不合法";
+        this.nextElementSibling.style.color = "red";
+      }
+    };
+  }
+  
+  //1. 找对象
+  var inp1 = document.getElementById("inp1");
+  checkReg(inp1, /^[1-9]\d{4,11}$/);
+  
+  var inp2 = document.getElementById("inp2");
+  checkReg(inp2, /^(13[0-9]|14[57]|15[0-25-9]|17[0137]|18[0-9])\d{8}$/)
+  
+  
+  checkReg(document.getElementById("inp3"), /^\w+@\w+(\.\w+)+$/);
+  
+  checkReg(document.getElementById("inp4"), /^0\d{2,3}-\d{7,8}$/);
+  
+  checkReg(document.getElementById("inp5"), /^[\u4e00-\u9fa5]{2,4}$/);
+</script>
+
+</body>
+</html>

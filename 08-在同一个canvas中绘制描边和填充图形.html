@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    
+    // 绘制填充图形
+    // ctx.fill();
+
+    // 左侧：
+    context.moveTo(100, 100);
+    context.lineTo(200, 100);
+    context.lineTo(200, 200);
+    context.lineTo(100, 200);
+    context.closePath();
+
+    context.stroke();
+ 
+    // beginPath()
+    // 作用：开启新路径，调用这个方法以后，就会开启一个全新的路径
+    //      那么原来描绘的路径就不起作用了!!!
+    //      再调用 stoke 或者 fill方法, 只会对 beginPath() 以后再描绘的路径起作用!
+    context.beginPath();
+
+    // 右侧：
+    context.moveTo(300, 100);
+    context.lineTo(400, 100);
+    context.lineTo(400, 200);
+    context.lineTo(300, 200);
+    context.closePath();
+
+    context.fill();
+    
+    
+    
+  </script>
+</body>
+</html>

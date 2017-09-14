@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+    
+  </style>
+</head>
+<body>
+<div id="box"></div>
+
+<script>
+  
+  var box = document.getElementById("box");
+  
+  //1. 在盒子上注册鼠标按下事件 ，
+  box.onmousedown = function (e) {
+    //1.1 记录鼠标在盒子中按下的位置
+    e = e || window.event;
+    var spaceX = getPage(e).x - box.offsetLeft;
+    var spaceY = getPage(e).y - box.offsetTop;
+    
+    //1.2 给document注册鼠标移动事件
+    document.onmousemove = function (e1) {
+      e1 = e1 || window.event;
+      box.style.left = getPage(e1).x -spaceX + "px";
+      box.style.top = getPage(e1).y -spaceY + "px";
+      
+    }
+  };
+
+  //2. 给document注册鼠标弹起事件
+  document.onmouseup = function () {
+    document.onmousemove = null;
+  }
+
+  function getPage(e) {
+    return {
+      x : e.pageX || e.clientX + document.documentElement.scrollLeft,
+      y : e.pageY || e.clientY + document.documentElement.scrollTop
+    }
+  }
+  
+</script>
+
+</body>
+</html>

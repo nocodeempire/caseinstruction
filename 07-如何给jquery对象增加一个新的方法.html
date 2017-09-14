@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  
+  //怎么给数组增加一个新方法
+  //给数组的原型加了一个新方法，所以，所有的数组都会有这个方法。
+//  Array.prototype.sayHello = function () {
+//    console.log("呵呵");
+//  }
+//
+//  var arr = new Array();
+//  arr.sayHello();
+//
+//  var arr1 = new Array();
+//  arr1.sayHello();
+  
+  //原型 prototype (面向)
+
+
+  
+  $.fn.sayHello = function () {
+      console.log("呵呵");
+      //把这个方法变牛逼。
+  }
+  //jQuery.prototype
+  //jQuery.fn
+  //$.fn
+  
+  
+  $("div").sayHello();
+
+</script>
+
+
+</body>
+</html>

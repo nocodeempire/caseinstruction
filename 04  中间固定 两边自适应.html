@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+			height: 100px;
+			position: relative;
+		}
+		.center {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			/* 定位的层级默认就比浮动和标准流的要高 */
+			/* 不能直接用margin去居中，因为这样会触发文本绕排 ，文字会掉下去*/
+			position: absolute;
+			left: 50%;
+			top: 0;
+			margin-left: -50px;
+		}
+		.left,.right {
+			width: 50%;
+			float: left;
+			height: 100px;
+			-webkit-box-sizing:border-box;
+			box-sizing:border-box;
+			background-color: red;
+		}
+		.left {
+			padding-right: 60px;
+		}
+		.right {
+			padding-left: 60px;
+		}
+		.content {
+			width: 100%;
+			height: 100px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left"><div class="content"></div></div>
+		<div class="right"><div class="content"></div></div>
+		<div class="center">
+			HELLO!!!
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<ul>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+  <li><a href="#">这是内容</a></li>
+</ul>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function(){
+    
+    //index() 获取的是当前元素在他兄弟元素里面的下标
+    $("a").click(function () {
+      console.log($(this).index());
+    });
+  });
+</script>
+
+</body>
+</html>

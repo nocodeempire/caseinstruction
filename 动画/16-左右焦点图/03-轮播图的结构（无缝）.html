@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    #slide {
+      width: 790px;
+      height: 340px;
+      margin: 100px auto;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /*
+      轮播图样式的特点：
+        1. ul要足够的宽，要求能够一行放下所有的li
+        2. 父盒子的宽高和图片的宽高一样
+        3. 父盒子要有一个overflow:hidden ,仅显示一张图片，不多不少
+    */
+    
+    #slide ul {
+      width: 1000%;
+      position: absolute;
+    }
+    
+    #slide ul li {
+      float: left;
+    }
+    
+    #slide ul img {
+      display: block;
+    }
+    
+    #slide ol {
+      width: 182px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, .6);
+      /*background-color: pink;*/
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      margin-left: -91px;
+      border-radius: 10px;
+    }
+    
+    #slide ol li {
+      width: 12px;
+      height: 12px;
+      float: left;
+      background-color: #fff;
+      border-radius: 50%;
+      margin-top: 4px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    
+    #slide ol li.current {
+      background-color: red;
+    }
+    
+    #arrow {
+      display: none;
+    }
+    
+    #leftArr,
+    #rightArr {
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      text-decoration: none;
+      color: #fff;
+      text-align: center;
+      font: 700 24px/60px "宋体";
+    }
+    
+    #leftArr {
+      left: 0;
+    }
+    
+    #leftArr:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    #rightArr:hover {
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+    
+    #rightArr {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div id="slide">
+  <!--放了所有的图片-->
+  <ul>
+    <li>
+      <a href="#">
+        <img src="images/1.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/2.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/3.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/4.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/5.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/6.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/7.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/8.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="images/1.jpg" alt="">
+      </a>
+    </li>
+  </ul>
+  
+  <ol>
+    <li class="current"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+  
+  <div id="arrow">
+    <a href="javascript:;" id="leftArr">&lt;</a>
+    <a href="javascript:;" id="rightArr">&gt;</a>
+  </div>
+</div>
+
+
+<script src="animate.js"></script>
+<script>
+  
+  //1. 找对象
+  var slide = document.getElementById("slide");
+  var ul = slide.children[0];
+  var lis = ul.children;
+  var arrow = document.getElementById("arrow");
+  var leftArr = document.getElementById("leftArr");
+  var rightArr = document.getElementById("rightArr");
+  
+  var imgWidth = slide.offsetWidth;
+  
+  //2. 给slide注册鼠标经过事件， 让arrow显示
+  slide.onmouseover = function () {
+    arrow.style.display = "block";
+  }
+  
+  //3. 给slide注册鼠标离开事件， 让arrow隐藏
+  slide.onmouseout = function () {
+    arrow.style.display = "none";
+  }
+  //4. 点击右箭头
+  var count = 0;//跑出去的张数
+  rightArr.onclick = function () {
+    //如果是最后一张图片了，偷偷摸摸的把假图片换成第一张
+    if(count == lis.length -1){
+      count = 0;
+      ul.style.left = 0;
+    }
+    
+    //不动
+    count++;
+    var target = -count * imgWidth;
+    animate(ul, target, 40);
+  }
+  //5. 点击左箭头
+  leftArr.onclick = function () {
+    //判断是不是第一张， 偷偷摸摸的把真图片换成假图片
+    if(count == 0){
+      count = lis.length -1;
+      ul.style.left = - count * imgWidth + "px";
+    }
+    
+    
+    count--;//7   -7 * 790
+    var target = -count * imgWidth;
+    animate(ul, target, 40);
+  }
+
+</script>
+
+</body>
+</html>

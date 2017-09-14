@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /*canvas {
+      width: 600px;
+      height: 400px;
+    }*/
+  </style>
+</head>
+
+<body>
+  <!-- 第一种方式 -->
+  <!--<canvas id="cv" height="400" width="600"></canvas>-->
+  <canvas id="cv"></canvas>
+
+  <script>
+    // canvas中设置宽高的两种方式：
+    // 1 通过canvas标签的行内属性 width 和 height 来设置
+    // 2 通过 canvas DOM对象的 width 和 height 属性来设置
+
+    // 第二种方式：
+    var cv = document.getElementById('cv');
+    cv.width = 600;
+    cv.height = 400;
+
+    var ctx = cv.getContext('2d');
+    ctx.moveTo(100, 100);
+    ctx.lineTo(300, 100);
+    ctx.stroke();
+
+    // 为什么不能通过样式来设置宽高？？？
+    // 以上两种正确的方式中设置宽高，实际上是改变了canvas画布中像素点的个数！
+    // 比如：cv.width = 600 表示水平方向有 600 个像素点
+    //      cv.height = 400 表示垂直方向有 400 个像素点
+    // 而通过样式来设置宽高，不会改变像素点的个数，而仅仅是将画布放大或缩小了
+
+    // 注意：不能使用样式来设置宽度和高度（样式包含了：行内style和style标签）
+  </script>
+</body>
+
+</html>

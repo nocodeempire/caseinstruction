@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    var toRadian = function( angle ) {
+      return angle / 180 * Math.PI;
+    };
+    
+    // 1 因为旋转是以 原点为中心点的，所以，需要让正方形的中心落在原点上
+
+    var x = cv.width / 2,
+      y = cv.height / 2,
+      startAngle = 0,
+      step = 5;
+
+    setInterval(function () {
+      context.save();
+
+      // 清空画布：
+      context.clearRect(0, 0, cv.width, cv.height);
+      // 1 先平移画布
+      context.translate(cv.width / 2, cv.height / 2);
+      // 2 旋转
+      context.rotate( toRadian( startAngle+=step ) );
+      // 3 绘制矩形
+      context.strokeRect(-50, -50, 100, 100);
+
+      context.restore();
+    }, 50);
+    
+
+  </script>
+</body>
+</html>

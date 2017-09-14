@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		button {
+			margin-top: 120px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<button>点我呀</button>
+	<script type="text/javascript">
+	var btn = document.querySelector('button');
+	var box = document.querySelector('.box');
+
+	var num = 0;
+
+	btn.onclick = function(){
+		box.style.transform = 'translateX(10px)';
+	}
+
+	box.onclick = function(){
+		box.style.transform = 'translateX(0px)';
+	}
+	</script>
+</body>
+</html>

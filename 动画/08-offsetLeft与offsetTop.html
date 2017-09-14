@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #father {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+      position: relative;
+      margin-left: 100px;
+    }
+    
+    #son {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      position: absolute;
+      left: 100px;
+      /*margin: 20px;*/
+    }
+  </style>
+</head>
+<body>
+
+<div id="father">
+  <div id="son"></div>
+</div>
+
+<script>
+
+  //offsetLeft与offsetTop
+  var son = document.getElementById("son");
+  
+  
+  //son.style.left = "200px";
+  //console.log(son.style.left);
+  
+  // 1. offsetLeft能够获取  元素距离 offsetParent的真实距离
+  // 2.获取到的值是数值类型， 可以直接运算
+  //console.log(son.offsetLeft);
+  son.offsetLeft = 200;
+  
+  
+</script>
+
+</body>
+</html>

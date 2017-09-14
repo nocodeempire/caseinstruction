@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      background-color: hotpink;
+      width: 400px;
+      height: 400px;
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAjCAYAAAAe2bNZAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDRkE1QTY4QUZEQkMxMUUzOTEyRkNDNDE0Q0Q0M0JFMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDRkE1QTY4QkZEQkMxMUUzOTEyRkNDNDE0Q0Q0M0JFMSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjQzRDAyNEY1RkRCMTExRTM5MTJGQ0M0MTRDRDQzQkUxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjQzRDAyNEY2RkRCMTExRTM5MTJGQ0M0MTRDRDQzQkUxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+yIzF6gAAAZFJREFUeNrsl01LAkEYx53ssoGHLuJFiowSD3axBOlb5KWv5Bfp4kHoUhAERpdeKCLDQxcJgrqop+qQ2++p5yBiu7PphuAM/Ji3/7PzZ/eZGdb4vp+YlbKQmKHizDgzzsx8mjHG/AqlBF3oSTtEG1pM2Akc9CBiz6hetJtBuxugDXcjoiAC4irwASuKtCt/Xed7rQnMNKE+1K/L2L+aYSwFe/omckPjOR2TuVQsZqAKJ9CGnv9T+lAbs2BN53zVtjW2amPGWCTWGxzAJTzAHYnaDcnDZaoiFGAb9sGbOIGhA4eQjHpuDAYDo7GdaX2mDXiCU1i0NSJajZHY/NQSmDoLj3ABnoURT7USk536bqKdhhY0LMw0VJuOspus7yaS9pVKjGQs5KJpaExsF6XskJaF7h624r6183A18kl2oDSiu4bNyNd2hJxJ6glb1H4ZzuFdkXZZ54qqTcaSM5RVkK29ROARtdxDz7CuSLupc55q1+J8M7fwCcdQGPOsgs6J5ibqmzHuj9KZcWacmXky8yXAAC99VjY0FHl/AAAAAElFTkSuQmCC)
+    }
+  </style>
+</head>
+
+<body>
+  <div id="dv">
+
+  </div>
+  
+  <canvas id="c"></canvas>
+  <script>
+    var cv = document.getElementById('c');
+    var context = cv.getContext('2d');
+
+    cv.width = 400;
+    cv.height = 300;
+    cv.style.border = '1px solid red'
+
+    context.fillStyle = 'red';
+    context.fillText('你好', 20, 20);
+    context.fillRect(100, 100, 200, 100);
+
+    // 第一个参数：表示图片格式（固定格式）
+    // 第二个参数：生成图片的质量，1表示无损压缩
+    var str = cv.toDataURL('image/png', 1);
+    // console.log(str);
+
+    dv.style.backgroundImage = 'url(' + str + ')';
+
+    // 精灵图（雪碧图） sprite img
+    // 目的：减少网络请求的次数，提高程序的性能
+
+    // 字体图标：将一些小图片放到字体中，减少了精灵图的大小
+    // 优势：不失真，体积小，使用方便
+    // 劣势：只能是纯色
+    // 如果是多色，是通过其他技术来实现的（SVG）
+
+    // base64编码的图片
+
+    // 浏览器会将 base64 编码的字符串，解析为一个 图片 来绘制
+  </script>
+</body>
+
+</html>

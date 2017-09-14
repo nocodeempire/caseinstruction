@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      padding: 10px;
+      border: 10px solid #000;
+      /*overflow: auto;*/
+      
+    }
+  </style>
+</head>
+<body>
+
+<div id="box">
+</div>
+
+
+<script>
+  var box = document.getElementById("box");
+ 
+//  console.log(box.offsetHeight);//100
+//  console.log(box.scrollHeight);//100 如果内容不超出
+//  console.log(box.clientHeight);//100
+//
+//  console.log(box.clientLeft);
+//  console.log(box.clientTop);
+
+  //现代浏览器 window.innerWidth
+  //IE678
+  //console.log(window.innerWidth);
+  
+  //onresize  : 当大小发生改变的时候，会触发， 给window注册
+  window.onresize = function () {
+    console.log(window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0);
+    
+    console.log(window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0);
+  }
+  
+  function getclientWidth() {
+    return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+  }
+  
+  function getClientHeight() {
+    return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0;
+  }
+  
+  
+</script>
+</body>
+</html>

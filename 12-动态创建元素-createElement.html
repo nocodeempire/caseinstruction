@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<input type="button" value="创建" id="btn">
+<div id="box"></div>
+
+<script>
+  var box = document.getElementById("box");
+
+//  //创建元素 p
+//  //在内存中创建一个元素。 仅仅一个标签
+//  var newP = document.createElement("p");
+//  newP.innerHTML = "我是创建出来的一个p标签";
+//
+//  console.log(newP);
+//
+//  box.appendChild(newP);
+
+  var btn = document.getElementById("btn");
+
+  btn.onclick = function () {
+    //1. 创建一个button
+    var button = document.createElement("button");
+    //2. 设置内容
+    button.innerHTML = "我是要给按钮";
+    //3. 添加到box中
+    box.appendChild(button);
+  };
+</script>
+
+</body>
+</html>

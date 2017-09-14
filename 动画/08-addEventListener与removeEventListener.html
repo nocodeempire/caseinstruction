@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  
+  
+  //如果想要注册的那个事件能够被移除，不能使用匿名函数
+  function fn() {
+    console.log("呵呵");
+  }
+
+  function fn1() {
+    console.log("哈哈");
+  }
+  document.addEventListener("click", fn);
+  
+  
+  document.addEventListener("click", fn1);
+  
+  
+  //如何移除
+  document.removeEventListener("click", fn);
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 90px;
+      background-color: hotpink;
+      border-top: 10px solid green;
+      border-radius: 50px 50px 0 0 / 10px 10px 0 0;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="奔跑400吧,张学路" id="btn1">
+<input type="button" value="奔跑800吧,张学路" id="btn2">
+
+<p></p>
+<div id="box"></div>
+
+<script>
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var box = document.getElementById("box");
+  
+  
+  btn1.onclick = function () {
+    animate(box, 400);
+  }
+  
+  btn2.onclick = function () {
+    animate(box, 800);
+  }
+  
+  
+  function animate(element, target) {
+    clearInterval(element.timer);
+    element.timer = setInterval(function () {
+      
+      
+      //如果target比leader大，说明要往右跑  step是正数
+      //如果target 比leader 小，说明要往左跑， step是负数
+      var leader = element.offsetLeft;
+      var step = target > leader ? 12 : -12;
+      
+      
+      //原因：到达终点的距离已经不够一步，还跑就会跑过，如果距离都不够一步，不跑了。
+      var distance = Math.abs(target - leader);
+      if (distance >= Math.abs(step)) {
+        leader = leader + step;
+        element.style.left = leader + "px";
+      } else {
+        clearInterval(element.timer);
+        //把他抱过去
+        element.style.left = target + "px";
+      }
+    }, 15);
+  }
+</script>
+</body>
+</html>

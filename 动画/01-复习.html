@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+
+  //1. 我们定义的变量其实就是window的一个属性。
+  //window : 顶级对象
+  //var num = 11;
+  //console.log(num);
+
+  //console.log(window.num);
+  //window.num = 12;
+  //console.log(num);
+
+
+  //2. 函数与构造函数的问题
+  //构造函数就是函数，只不过构造函数比较特殊一点： 构造函数的目的：初始化对象
+//  function Teacher (name, age) {
+//    this.name = name;
+//    this.age = age;
+//
+//    //通过new 来调用的， this指的是创建的那个对象。
+//    console.log(this);
+//  }
+
+  //new创建的对象
+    //1. 创建一个空对象，
+    //2. 让this指向这个对象
+    //3. 执行构造函数  (构造函数：给this添加属性和方法  初始化对象)
+    //4. 返回这个对象
+//  var tea = new Teacher();
+//
+//
+//  var tea2 = new Teacher();
+
+
+
+  //3. 通常情况，构造函数跟new一起使用。
+//  function Teacher (name, age) {
+  //    this.name = name;
+  //    this.age = age;
+  //    console.log(this);
+  //  }
+  //
+  //
+  //  window.Teacher();
+
+
+
+
+  var name = "张三";  //window.name = "张三"
+  var age = 11;       //window.age = 11;
+
+
+  function Teacher(){
+    this.name = "ls";
+    this.age = 12;
+  }
+
+
+  //this  谁调用这个方法，this就指向谁。
+  var obj = Teacher();
+  console.log(obj);//undefined
+
+  console.log(name);
+  console.log(age);
+
+</script>
+</body>
+</html>

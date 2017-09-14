@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #table_name {
+      margin: 30px auto;
+    }
+    
+    #table_name td {
+      /*background-color: yellowgreen;*/
+      font: 20px "微软雅黑";
+      padding: 5px;
+      text-align: center;
+    }
+  
+  
+  </style>
+</head>
+<body>
+<input type="button" value="开始" id="btn1">
+<input type="button" value="结束" id="btn2">
+
+<script>
+  //定义一个函数，参数：元素，二维数组；根据二位数组，创建一个table，并返回一个数组，table中的td构成
+  function creatTableName(elemnt, list) {
+    var arr = [];
+    var table = document.createElement("table");
+    table.id = "table_name";
+    elemnt.appendChild(table);
+    for (var i = 0; i < list.length; i++) {
+      var tr = document.createElement("tr");
+      table.appendChild(tr);
+      for (var j = 0; j < list[i].length; j++) {
+        var td = document.createElement("td");
+        tr.appendChild(td);
+        if (list[i][j] != "@") {
+          td.innerHTML = list[i][j];
+          td.style.backgroundColor = "yellowgreen";
+          arr.push(td);
+        }
+      }
+    }
+    return arr;
+  }
+  var list = [
+    ["@", "@", "@", "@", "讲师", "@"],
+    ["陈龙", "邓晓娟", "胡秀林", "汪名鉴", "陈永菊", "@", "胡玉峰", "姚莎莎", "周文娟", "薛忠"],
+    ["张聪聪", "魏秋俊", "王丹", "张彤", "黄祥", "@", "唐先菊", "郑玉梦", "陈国强", "陈少俊"],
+    ["蒋露露", "冯涛", "胡韵", "胡文杰", "胡竹君", "@", "邵文", "董海南", "何义茂", "王俊禄"],
+    ["郭可可", "余方", "梁多强", "任晓静", "李超亮", "@", "徐晨达", "张玉蒙", "李鑫妹", "安凯凯"],
+    ["@", "朱丽榕", "胡适", "蔡强", "汪苗苗", "@", "唐燕山", "孙玉竹", "段性博", "程小益"],
+    ["@", "梁新楠", "任飞", "徐舜海", "杨豪", "@", "孙一杭", "焦凯", "张士楠", "周淑雅"],
+    ["王力量", "金双姐", "颜一波", "宋云", "卓凡", "@", "刘金萨", "肖建文", "胡康建", "张鹍"],
+    ["周春丽", "李端", "李玉飞", "张家文", "姚永东", "@", "何义梅", "史伟", "崔凯", "余政"],
+    ["余坤", "苏芮", "王亭亭", "甘浩", "宋号号", "@", "王涛", "高原", "高蕾", "赵力臻"],
+    ["杨健", "芮延香", "汪勇", "史时敏", "陈印进"],
+    ["王丽莎", "王春燕", "林仙豪", "高玉翔", "宋国强"]
+  ];
+  var arr = creatTableName(document.body, list);
+  //  console.log(arr);
+  
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer;
+  btn1.onclick = function () {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      var random = parseInt(Math.random() * arr.length);
+      for (var i = 0; i < arr.length; i++) {
+        arr[i].style.backgroundColor = "yellowgreen";
+      }
+      arr[random].style.backgroundColor = "pink";
+    }, 50);
+  };
+  btn2.onclick = function () {
+    clearInterval(timer);
+  };
+</script>
+</body>
+</html>

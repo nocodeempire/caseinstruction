@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+<input type="button" value="按钮">
+<div></div>
+
+<!--1. 必须先引入jquery文件-->
+<script src="jquery-1.12.4.js"></script>
+<!--2. 引入插件文件-->
+<script src="plugins/jquery.color.js"></script>
+<script>
+  $(function(){
+    $("input").click(function () {
+      
+      //3. 直接使用插件
+      $("div").animate({backgroundColor:"#ffc0cb"}, 1000, function () {
+          console.log("hehe");
+      });
+      
+    })
+  });
+</script>
+
+</body>
+</html>

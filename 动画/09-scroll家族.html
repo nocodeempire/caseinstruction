@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      /*padding: 10px;*/
+      /*border: 10px solid #000;*/
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box">
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+  好多文字
+</div>
+
+
+<script>
+  var box = document.getElementById("box");
+  
+  // 获取盒子自身真实的大小
+  //console.log(box.offsetHeight);
+  //获取盒子内容的大小
+  //console.log(box.scrollHeight);
+  
+  //scrollLeft与scrollTop
+  //console.log(box.scrollTop);
+  
+  //onscroll  : 当滚动的时候触发
+  box.onscroll = function () {
+    //console.log("呵呵");
+    console.log(box.scrollTop);
+  }
+</script>
+</body>
+</html>

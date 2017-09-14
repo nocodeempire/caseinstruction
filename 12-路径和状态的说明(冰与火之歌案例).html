@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 每一条线的颜色都不同
+    // 每一条线都是在上一条线的基础上, x方向+1
+    var x = 100;
+
+    for (var i = 0; i < 256; i++) {
+      // 开启新路径
+      context.beginPath();
+
+      // 描绘路径
+      context.moveTo(x, 100);
+      context.lineTo(x, 200);
+
+      // 设置线的颜色
+      // -> rgb(0, 0, 255)
+      context.strokeStyle = 'rgb(' + (255 - i) + ', ' + i + ', ' + i + ')';
+      // 绘制
+      context.stroke();
+
+      x += 1;
+    }
+  </script>
+</body>
+
+</html>

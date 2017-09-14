@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 绘制序列帧动画：
+    // 有顺序，一帧接着一帧来绘制
+
+    // 1 创建图片对象
+    var img = new Image();
+    // 2 设置 src 路径
+    img.src = './imgs/NPCrabbitbaby-2.png';
+    // 3 等待图片加载完成
+    img.onload = function () {
+      var imgW = this.width / 4,      // 每一帧图片的宽度
+        imgH = this.height / 4,       // 每一帧图片的高度
+        frameIndex = 0;               // 记录当前绘制到第几帧
+      
+      // 优化版：
+      setInterval(function () {
+        context.clearRect(0, 0, cv.width, cv.height);
+
+        context.drawImage(img, imgW * frameIndex++, 0, imgW, imgH, 200, 200, imgW * 2, imgH * 2);
+
+        frameIndex %= 4;
+      }, 200);
+
+      // 原始方式：
+      /*setInterval(function () {
+        context.clearRect(0, 0, cv.width, cv.height);
+
+        context.drawImage(img, imgW * frameIndex, 0, imgW, imgH, 200, 200, imgW * 2, imgH * 2);
+
+        frameIndex++;
+        if (frameIndex > 3) {
+          frameIndex = 0;
+        }
+      }, 200);*/
+
+      // 第一次绘制：
+      // context.drawImage(img, imgW * 0, 0, imgW, imgH, 200, 200, imgW * 2, imgH * 2);
+      // 第二次绘制：
+      // context.drawImage(img, imgW * 1, 0, imgW, imgH, 200, 200, imgW * 2, imgH * 2);
+      // 第三次绘制：
+      // context.drawImage(img, imgW * 2, 0, imgW, imgH, 200, 200, imgW * 2, imgH * 2);
+      // 第四次绘制：
+      // context.drawImage(img, imgW * 3, 0, imgW, imgH, 200, 200, imgW * 2, imgH * 2);
+
+    };
+  </script>
+</body>
+
+</html>

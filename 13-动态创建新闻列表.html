@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="生成" id="btn">
+<div id="box">
+
+</div>
+
+<script>
+
+  var arr = [
+    '俄海关"封杀"网购中国小米手机 包裹全数被退回',
+    '司机醉驾遇检查弃车而逃 被抓后称自己是在夜跑',
+    '网瘾少年调查：逾九成缺少父爱，理工男成重灾群体',
+    '女生被人贩子拖拽，怎么证明自己真的不认识他？',
+    '揭秘"最完美公务机"：220平米内部空间 50万/小时',
+    '揭秘"最完美公务机"：220平米内部空间 50万/小时',
+    '揭秘"最完美公务机"：220平米内部空间 50万/小时',
+    '揭秘"最完美公务机"：220平米内部空间 50万/小时',
+    '揭秘"最完美公务机"：220平米内部空间 50万/小时',
+    '揭秘"最完美公务机"：220平米内部空间 50万/小时'
+  ]
+
+  //1. 找对象
+  var btn = document.getElementById("btn");
+  var box = document.getElementById("box");
+
+  btn.onclick = function () {
+    if(box.children.length > 0){
+      return;
+    }
+
+
+    //2. 创建一个ul，添加到box中
+    //2.1 创建了ul
+    var ul = document.createElement("ul");
+
+    //2.2 添加到box中
+    box.appendChild(ul);
+
+    //3. 根据arr创建li，添加到ul里面
+    for (var i = 0; i < arr.length; i++) {
+      //3.1 创建li
+      var li = document.createElement("li");
+      //3.2 添加到ul
+      ul.appendChild(li);
+
+      //3.3 设置li的内容
+      li.innerHTML = arr[i];
+
+
+      //3.4 设置背景颜色
+      if(i % 2 == 0){
+        li.style.backgroundColor = "#ff9258";
+      }else {
+        li.style.backgroundColor = "deeppink";
+      }
+
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

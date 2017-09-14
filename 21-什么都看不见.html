@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>复制</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+    
+    li {
+      float: left;
+      width: 200px;
+      height: 200px;
+      background: pink;
+      text-align: center;
+      line-height: 200px;
+      margin: 0 20px 20px 0;
+    }
+  </style>
+  
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      
+      //没法隐式迭代，就显示迭代。
+      for (var i = 0; i < $("li").length; i++) {
+        $("li").eq(i).css("opacity", (i + 1) / 10);
+        
+        //定义的所有的变量都是全局
+      }
+      
+      $("li").each(function (index, element) {
+        //console.log(index);//index是下标
+        //console.log(element);//element是DOM对象
+        $(element).css("opacity", (index + 1) / 10);
+        
+        //局部的
+      })
+      
+      
+      var $ = "";
+      
+      //var ￥ = "111";
+      
+      
+      
+      
+    });
+  </script>
+
+</head>
+
+<body>
+<ul id="ulList">
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+  <li>什么都看不见</li>
+</ul>
+</body>
+
+</html>

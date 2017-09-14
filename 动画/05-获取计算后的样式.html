@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      padding: 10px;
+      border: 10px solid black;
+      margin: 10px;
+    }
+    
+    #box {
+      width: 200px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<div id="box" style="width:300px;"></div>
+
+
+<script>
+  
+  var box = document.getElementById("box");
+  //console.log(box.style);
+  //第一个参数：需要获取样式的元素
+  //第二个参数： null
+  
+  //获取任何计算后的样式
+  //console.log(window.getComputedStyle(box, null).width);
+  //console.log(window.getComputedStyle(box, null).height);
+  //console.log(window.getComputedStyle(box, null).paddingLeft);
+  //console.log(window.getComputedStyle(box, null).backgroundColor);
+  //console.log(window.getComputedStyle(box, null).left);
+
+//  console.log(box.currentStyle.width);
+//  console.log(box.currentStyle.height);
+//  console.log(box.currentStyle.paddingLeft);
+//  console.log(box.currentStyle.backgroundColor);
+//  console.log(box.currentStyle.left);
+
+  
+  //获取元素计算后的样式
+  function getStyle(element, attr) {
+    //如果window有getComputedStyle这个方法
+    if(window.getComputedStyle) {
+      return window.getComputedStyle(element, null)[attr];
+    }else {
+      return element.currentStyle[attr];
+    }
+  }
+
+
+  console.log(getStyle(box, "width"));
+  console.log(getStyle(box, "height"));
+</script>
+</body>
+</html>

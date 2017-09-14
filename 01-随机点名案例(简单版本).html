@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    input {
+      position: absolute;
+      left: 50%;
+      width: 100px;
+      margin-left: -20px;
+      top: 10px;
+    }
+
+    ul {
+      width: 816px;
+      list-style: none;
+      margin: 40px auto;
+    }
+
+    ul li {
+      width: 100px;
+      height: 40px;
+      border: 1px solid #cc9258;
+      float: left;
+    }
+
+    .current {
+      background-color: hotpink;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="随机点名" id="btn">
+<ul id="nine">
+</ul>
+<script>
+  var arr = ["张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八",
+    "张三", "李四", "王五", "赵六", "田七", "王八"];
+
+
+  //1. 找对象
+  var nine = document.getElementById("nine");
+  var btn = document.getElementById("btn");
+
+  //2. 根据arr的长度生成li，添加到ul中
+  for(var i = 0; i < arr.length; i++) {
+
+    //2.1 生成标签
+    var li = document.createElement("li");
+
+    //2.2 添加到ul上
+    nine.appendChild(li);
+
+    //2.3 设置li的内容
+    li.innerHTML = arr[i];
+  }
+
+
+  //3. 给btn注册点击事件
+  btn.onclick = function () {
+    var lis = nine.children;
+    //4. 随机选中一个li，并且排他
+    for(var i = 0; i < lis.length; i++) {
+      lis[i].style.backgroundColor = "";
+    }
+
+    //复活随机一个li
+    var random = parseInt(Math.random() * lis.length);
+    lis[random].style.backgroundColor = "hotpink";
+
+  }
+
+
+
+</script>
+</body>
+</html>

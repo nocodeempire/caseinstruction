@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <style type="text/css">
+        	
+        	.line {
+        		 height: 200px;
+        		 background-color: pink;
+        	}
+
+        	.box {
+        		 width: 100px;
+        		 height: 100px;
+        		 background-color: green;
+        		 transition: all 1s linear;
+        	}
+
+        	.line:hover .box {
+				  
+				  /* 位移 */
+				  transform: translate(-100px, -30px);
+        	}
+        </style>
+    </head>
+    <body>
+
+    	 <div class="line">
+    	 		
+    	 		<div class="box"></div>
+
+    	 </div>
+    </body>
+</html>

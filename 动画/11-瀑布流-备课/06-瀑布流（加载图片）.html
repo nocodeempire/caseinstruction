@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            position: relative;
+        }
+
+        .cc {
+            padding: 5px;
+            border: 1px solid red;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="cc"><img src="images/P_000.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_001.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_002.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_003.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_004.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_005.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_006.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_007.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_008.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_009.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_010.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_011.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_012.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_013.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_014.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_015.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_016.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_017.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_018.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_019.jpg" alt=""></div>
+    <div class="cc"><img src="images/P_020.jpg" alt=""></div>
+</div>
+
+<script>
+
+    window.onload = function () {
+        //1. 确定第一行有多少列，对于第一列来说，非常的简单，直接浮动就行了
+        //列数 = 页面可视宽度/图片的宽度
+        var box = document.getElementById("box");
+        var divs = box.children;
+        var imgWidth = divs[0].offsetWidth;
+        var pageWidth = client().width;
+        var columns = Math.floor(pageWidth / imgWidth);
+        console.log(columns);
+
+
+        //2. 将除了第一列剩下的图片通过定位的方式，一张一张的添加到最小列
+        //将第一列所有图片的高度放到一个数组里面
+        var arr = [];
+        for (var i = 0; i < columns; i++) {
+            arr.push(divs[i].offsetHeight);
+        }
+        console.log(arr);
+
+
+        for (var i = columns; i < divs.length; i++) {
+            var div = divs[i];
+            //获取最小列
+            var minIndex = getMin(arr).index;
+            var minHeight = getMin(arr).value;
+
+            div.style.position = "absolute";
+            div.style.left = divs[minIndex].offsetLeft + "px";
+            div.style.top = minHeight + "px";
+
+            //修改最小值
+            arr[minIndex] = minHeight + div.offsetHeight;
+        }
+
+
+        window.onscroll = function () {
+            //页面卷去的高度+页面的可视高度 > 最后一张图片的offsetTop
+            var scrollTop = scroll().scrollTop;
+            var pageHeight = client().height;
+            var offsetTop = divs[divs.length - 1].offsetTop;
+            console.log(scrollTop + " " + pageHeight + " " + offsetTop);
+            if (scrollTop + pageHeight >= offsetTop) {
+
+
+                //该加载图片了
+                var datas = [
+                    {"src": "images/P_001.jpg"},
+                    {"src": "images/P_002.jpg"},
+                    {"src": "images/P_003.jpg"},
+                    {"src": "images/P_004.jpg"},
+                    {"src": "images/P_005.jpg"},
+                    {"src": "images/P_006.jpg"},
+                    {"src": "images/P_007.jpg"},
+                    {"src": "images/P_008.jpg"},
+                    {"src": "images/P_009.jpg"},
+                    {"src": "images/P_010.jpg"},
+                    {"src": "images/P_011.jpg"},
+                    {"src": "images/P_012.jpg"},
+                    {"src": "images/P_013.jpg"},
+                    {"src": "images/P_014.jpg"},
+                    {"src": "images/P_015.jpg"},
+                    {"src": "images/P_016.jpg"},
+                    {"src": "images/P_017.jpg"},
+                    {"src": "images/P_018.jpg"},
+                    {"src": "images/P_019.jpg"},
+                    {"src": "images/P_020.jpg"}
+                ];
+
+                for (var i = 0; i < datas.length; i++) {
+                    var div = document.createElement("div");
+                    div.className = "cc";
+                    div.innerHTML = '<img src="' + datas[i].src + '" alt="">';
+                    box.appendChild(div);
+
+
+                }
+
+            }
+        }
+    };
+
+
+    function client() {
+
+        return {
+            width: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0,
+            height: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight || 0
+        }
+    }
+
+    function getMin(arr) {
+        var minValue = arr[0];
+        var minIndex = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (minValue > arr[i]) {
+                minValue = arr[i];
+                minIndex = i;
+            }
+        }
+
+        return {
+            index: minIndex,
+            value: minValue
+        };
+
+    }
+
+    function scroll() {
+        return {
+            scrollTop: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+            scrollLeft: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0
+        };
+    }
+
+</script>
+
+</body>
+</html>

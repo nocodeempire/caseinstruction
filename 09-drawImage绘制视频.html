@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+  <video id="vd" src="./imgs/1.mp4" controls></video>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+    var toRadian = function (angle) {
+      return angle / 180 * Math.PI;
+    };
+
+    window.onload = function () {
+      var vd = document.getElementById('vd');
+      var timerId;
+      context.drawImage(vd, 100, 100);
+
+      // 视频播放事件
+      vd.addEventListener('play', function() {
+        console.log('play');
+        timerId = setInterval(function() {
+          context.clearRect(0, 0, cv.width, cv.height);
+          
+          context.drawImage(vd, 100, 100);
+        }, 100);
+      });
+
+      // 停止
+      vd.addEventListener('ended', function() {
+        console.log('ended');
+        clearInterval(timerId);
+      });
+      // 暂停
+      vd.addEventListener('pause', function() {
+        console.log('pause');
+        clearInterval(timerId);
+      });
+    };
+  </script>
+</body>
+
+</html>

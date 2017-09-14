@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box {
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+		}
+		.info {
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform:translate(-50%,-50%);
+			box-shadow: 0 0 10px 2px rgba(0,0,0,.5); 
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 添加上draggable="true"就可以让一个dom元素产生拖拽效果（是一个影子） -->
+	<div draggable="true" class="box"></div>
+	<!-- 目标元素 -->
+	<div class="info"></div>
+	<!-- 图片元素默认是可以被拖拽的 -->
+	<!-- <img src="Chrysanthemum.jpg" alt=""> -->
+	<script type="text/javascript">
+
+	var box = document.querySelector('.box');
+	var info =document.querySelector('.info');
+	// 拖拽开始的时候触发
+	box.ondragstart = function(){
+		console.log('拽我干嘛，臭流氓');
+		box.style.background = 'green';
+	}
+	//　在拖拽的过程中持续触发
+	/*box.ondrag = function(){
+		console.log('别拽我裙子，流氓');
+	}*/
+	// 拖拽结束
+	box.ondragend = function(){
+		console.log('把裙子还给我');
+		box.style.background = 'green';
+		box.style.background = 'pink';
+	}
+
+
+	// 目标元素
+	// 拖拽元素进入到目标元素身上的时候触发
+	info.ondragenter = function(){
+		console.log('哎呀，客观您来了');
+		this.style.borderColor = 'red';
+	}
+	//拖拽元素离开目标元素身上的时候触发
+	info.ondragleave = function(){
+		console.log('欢迎下来再来');
+		this.style.borderColor = '#000';
+	}
+	// 拖拽元素进入到目标元素身上并松开鼠标的时候触发
+	// drop事件是被浏览器阻止的，要想这个事件得到触发，需要在dragover的时候阻止默认事件
+	info.ondrop = function(){
+		console.log('来，雅座里面请');
+		this.appendChild(box);
+	}
+	info.ondragover = function(event){
+		// console.log('进来坐坐吧');
+		// 阻止默认事件
+		event.preventDefault();
+	}
+	</script>
+</body>
+</html>

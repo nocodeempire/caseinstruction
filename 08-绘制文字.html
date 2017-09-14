@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+    var toRadian = function (angle) {
+      return angle / 180 * Math.PI;
+    };
+
+    // 绘制文字
+    context.font = '50px 宋体';
+
+    // 设置水平对齐方式：
+    context.textAlign = 'center';
+    // context.textAlign = 'right';
+
+    // 设置垂直对齐方式：
+    // context.textBaseline = 'middle';
+
+
+    context.strokeText('文字', cv.width / 2, cv.height / 2);
+
+    // 描边文字
+    // 第一个参数：表示要绘制的文字内容
+    // 第2／3个参数：表示绘制坐标
+    // 第4个参数：（可选）
+    //  表示绘制文字的最大长度，如果文字超过了最大长度，那么文字会被压缩
+    // context.strokeText('要绘制的文字内容', 100, 100);
+
+    // 填充文字
+    // context.fillText('abcdefg', 100, 150);
+
+    // 计算文字的宽度
+    // 参数是要计算的文字内容
+    // 返回值是一个对象，对象中有一个 width 属性，用来表示当前文字的宽度
+    var obj = context.measureText('要绘制的文字内容');
+    console.log(obj);
+    
+    // context.font = '30px 宋体';
+    // var obj = context.measureText('要绘制的文字内容');
+    // console.log(obj);
+  </script>
+</body>
+
+</html>

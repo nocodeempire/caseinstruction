@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        	 .box {
+        	 	 width: 200px;
+        	 	 height: 200px;
+        	 	 background-color: pink;
+
+        	 	 /* animation: ; */
+
+				 /* 动画名称 */
+        	 	 animation-name: move;
+				 /* 动画执行时间 */
+        	 	 animation-duration: 2s;
+        	 	 /* 动画执行次数 infinite 无限次执行*/
+        	 	 animation-iteration-count: infinite;
+        	 	 /* 动画速度类型 ease   ease-in  */
+        	 	 animation-timing-function: linear;
+        	 	 /* 动画延时执行 */
+        	 	 animation-delay: 1s;
+        	 	 /* 动画逆波 */
+        	 	 animation-direction: alternate;
+				 /* 定义动画时间之外的状态 */
+        	 	 animation-fill-mode: forwards;
+        	 	 /* 注意：animation-fill-mode 属性设置的时候要保证动画不是无限循环执行 */
+        	 }
+
+        	 .box:hover {
+        	 	 /* 动画暂停 */
+        	 	 animation-play-state: paused;
+        	 }
+
+        	 @keyframes move {
+        	 	 from {
+        	 	 	transform: translateX(0px);
+        	 	 }
+
+        	 	 to {
+				   transform: translateX(400px);
+        	 	 }
+        	 }
+        </style>
+    </head>
+    <body>
+
+
+    	  <div class="box"></div>
+    </body>
+</html>

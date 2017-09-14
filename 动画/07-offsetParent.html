@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #father {
+      width: 500px;
+      height: 500px;
+      background-color: pink;
+      /*position: relative;*/
+    }
+
+    #son {
+      width: 300px;
+      height: 300px;
+      background-color: #ff9258;
+      /*position: absolute;*/
+    }
+
+    #grandson {
+      width: 100px;
+      height: 100px;
+      background-color: cyan;
+      position: absolute;
+      left: 100px;
+      right: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="father">
+  <div id="son">
+    <div id="grandson"></div>
+  </div>
+</div>
+
+
+<script>
+
+  var grandSon = document.getElementById("grandson");
+  console.log(grandSon.parentNode);  //找父节点  亲爹
+  
+  console.log(grandSon.offsetParent); //找最近有定位的爹,如果找不到，会找body
+
+</script>
+
+</body>
+</html>

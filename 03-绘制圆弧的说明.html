@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    var toRadian = function( angle ) {
+      return angle / 180 * Math.PI;
+    };
+    
+    // 绘制圆弧的方向：
+    // 不管是逆时针还是顺时针，最终都要到达指定的角度（弧度）
+    // context.arc(100, 100, 100, toRadian(0), toRadian(90), true);
+    // context.stroke();
+    
+    // 0度叫的位置：水平向右的方向是 0度角所在的位置！！！
+    
+  </script>
+</body>
+</html>

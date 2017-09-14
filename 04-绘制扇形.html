@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    var toRadian = function( angle ) {
+      return angle / 180 * Math.PI;
+    };
+    
+    // 绘制扇形：
+    var x = cv.width / 2,
+      y = cv.height / 2;
+
+    /*// 1 先将起始坐标移动到圆心点
+    context.moveTo(x, y);
+    // 2 绘制圆弧
+    context.arc(x, y, 200, toRadian(0), toRadian(120));
+    // 3 闭合路径
+    context.closePath();
+    
+    context.stroke();*/
+
+    context.moveTo(x, y);
+    context.arc(x, y, 200, toRadian(0), toRadian(120));
+    context.fill();
+    
+    
+  </script>
+</body>
+</html>

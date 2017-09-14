@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    /*取消图片底部3像素距离*/
+    .box {
+      width: 300px;
+      height: 200px;
+      margin: 100px auto;
+      background-color: pink;
+      position: relative;
+      overflow: hidden;
+      border: 10px solid pink;
+    }
+    
+    .box ul li {
+      float: left;
+    }
+    
+    .box ul {
+      width: 1500px;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="box" id="screen">
+  <!--最后一张可以瞬间变成第一张，不会被发现。-->
+  <ul>
+    <li><img src="images/01.jpg" alt=""/></li>
+    <li><img src="images/02.jpg" alt=""/></li>
+    <li><img src="images/03.jpg" alt=""/></li>
+    <li><img src="images/04.jpg" alt=""/></li>
+    <li><img src="images/01.jpg" alt=""/></li>
+  </ul>
+</div>
+<script>
+
+  var screen = document.getElementById("screen");
+  var ul = screen.children[0];
+  
+  setInterval(function () {
+    var step = -3;
+    var leader = ul.offsetLeft;
+    leader = leader + step;
+    ul.style.left = leader + "px";
+    
+    if(leader == -1200){
+      ul.style.left = "0px";
+    }
+  }, 15);
+
+</script>
+</body>
+</html>

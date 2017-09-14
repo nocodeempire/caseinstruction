@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+
+<script>
+
+  var inputs = document.getElementsByTagName("input");
+
+  //打印当前元素的索引
+  for(var i = 0; i < inputs.length; i++) {
+
+    inputs[i].title = i;
+
+
+    inputs[i].onclick = function () {
+
+      console.log(this.title);
+
+    };
+  }
+
+</script>
+
+</body>
+</html>

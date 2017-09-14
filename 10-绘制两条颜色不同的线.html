@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // canvas绘图是基于状态绘图的！
+    // 只要设置了状态（线宽，颜色），接下来都是基于这个状态绘图的！
+    // 路径 是不会 影响状态的！
+
+    // 设置线宽：
+    context.lineWidth = 10;
+    // 设置 红色：
+    context.strokeStyle = 'rgba(255, 0, 0, 0.5)';
+
+    context.moveTo(100, 100);
+    context.lineTo(300, 100);
+
+    context.stroke();
+
+    context.beginPath();
+
+    // 设置 绿色
+    // context.strokeStyle = 'rgba(0, 255, 0, 0.5)';
+
+    context.moveTo(100, 150);
+    context.lineTo(300, 150);
+
+    context.stroke();
+  </script>
+</body>
+
+</html>

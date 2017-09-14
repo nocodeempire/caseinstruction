@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  
+  //console.log(/\d/.test("abb"));//只要这个字符串里面有 [0-9]任意一个
+  //console.log(/\d/.test("abb11"));//只要这个字符串里面有 [0-9]任意一个
+  //console.log(/\D/.test("abb"));//true
+  //console.log(/\D/.test("abb11"));//true
+  //console.log(/\D/.test("11"));//false
+
+  //console.log(/\w/.test("abc1"));//true
+  //console.log(/\w/.test("------"));//false
+  //console.log(/\w/.test("--_---"));//true
+
+  
+  //只要能找到一个符合要求的就行。
+  //console.log(/\W/.test("abc1"));//false
+  //console.log(/\W/.test("------"));//true
+  //console.log(/\W/.test("--_---"));//true
+  //console.log(/\s/.test("abc bdc"));//true
+  //console.log(/\s/.test("abc\nbdc"));//true
+  //console.log(/\s/.test("abcbdc"));//false
+  //console.log(/\S/.test("abc bdc"));//true
+  //console.log(/\S/.test("abc\nbdc"));//true
+  //console.log(/\S/.test("abcbdc"));//true
+
+  //在正则里面， .有特殊意义。  任意字符串
+  console.log(/./.test("a"));
+  console.log(/\./.test(".aaaaa"));
+
+
+</script>
+</body>
+</html>

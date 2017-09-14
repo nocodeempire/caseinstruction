@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+
+
+  <script>
+
+
+    //当文档加载完成的时候执行，如果有图片，等到图片也加载完成才会执行。
+    window.onload = function () {
+      var box = document.getElementById("box");
+      var btn = document.getElementById("btn");
+
+
+      var img = document.getElementById("img");
+      console.log(img.width);
+      console.log(img.height);
+
+//      btn.onclick = function () {
+//        //box.style.width = '300px';
+//        //box.style.height = "300px";
+//      }
+    }
+
+  </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<!--<div id="box"></div>-->
+
+<!--图片-->
+<img src="06.jpg" alt="" id="img">
+
+
+<script>
+
+</script>
+</body>
+</html>

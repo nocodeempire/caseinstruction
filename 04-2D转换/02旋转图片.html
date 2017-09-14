@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+			 .title {
+			 	 height: 100px;
+			 	 line-height: 100px;
+			 	 text-align: center;
+			 	 background-color: #ccc;
+			 }
+			 .content {
+			 	 text-align: center;
+			 }
+
+			 .content img {
+				  margin-top: 60px;
+				  margin-bottom: 30px;
+				  transition: all 2s linear;
+			 }
+
+			 .content img:hover {
+			 	 transform: rotate(360deg) scale(1.5);
+			 }
+
+			 .box2 .content img:hover {
+			 	 transform: rotate(-360deg) scale(0.5);
+			 }
+
+
+
+
+			 .box {
+			 	 transform: rotate(90deg) scale(0, 0);
+			 }
+        </style>
+    </head>
+    <body>
+
+    	  <div class="box">
+    	  	 <div class="title">顺时针旋转360度，扩大1.5倍</div>
+
+    	  	 <div class="content">
+    	  	 	 <img src="img/share1.png" alt="">
+    	  	 </div>
+    	  </div>
+
+    	  <div class="box  box2">
+    	  	 <div class="title">逆时针旋转360度，缩小0.5倍</div>
+
+    	  	 <div class="content">
+    	  	 	 <img src="img/share2.png" alt="">
+    	  	 </div>
+    	  </div>
+    </body>
+</html>

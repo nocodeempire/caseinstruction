@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="按钮" id="btn">
+<select>
+  <option>西施</option>
+  <option>韩思琪</option>
+  <option>张学路</option>
+  <option>张清羽</option>
+  <option>芙蓉</option>
+  <option>凤姐</option>
+  <option>如花</option>
+</select>
+
+
+<script>
+
+  var btn = document.getElementById("btn");
+  var options = document.getElementsByTagName("option");
+
+
+  btn.onclick = function () {
+
+    //随机数
+    var random = parseInt(Math.random() * options.length);
+    //随机一个option选中
+    options[random].selected = true;
+
+  };
+
+</script>
+</body>
+</html>

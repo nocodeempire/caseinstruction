@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 100px;
+      background-color: pink;
+      padding: 10px;
+      border: 10px solid #000;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+
+<script>
+  var box = document.getElementById("box");
+  
+  //style.width只能获取到行内样式
+  //style.width获取到的值  200px 还需要转换成成数值。
+  //console.log(box.style.width);
+  //box.style.width = "300px";
+  
+  //offsetWidth能够获取到盒子的真实宽度
+  //offsetWidth直接获取的是数值类型，可以直接参与运算
+  //console.log(box.offsetWidth);
+  //console.log(box.offsetHeight);
+  
+  //offsetWidth是一个通过计算后得到的值， padding + border + width
+  box.offsetWidth = 300;
+  
+</script>
+</body>
+</html>

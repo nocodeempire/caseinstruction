@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.father {
+			width: 200px;
+			height: 40px;
+			background-color: red;
+			position: relative;
+		}
+		.son {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			position: absolute;
+			left: 0;
+			top: 40px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var father = document.querySelector('.father');
+		var son = document.querySelector('.son');
+
+		father.onmouseenter = function(){
+			son.style.display = 'block';
+		}
+		father.onmouseleave = function(){
+			son.style.display = 'none';
+		}
+
+
+	</script>
+</body>
+</html>

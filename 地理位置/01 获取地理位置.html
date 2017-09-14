@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// getCurrentPosition 获取用户的地理位置
+	// 有三个参数
+	// （1）成功的回调函数 接受一个position对象，这个对象里面装的是用户的地理位置信息
+	// （2）失败的回调函数 接受一个error 这个对象里面装的是错误的信息
+	// （3）配置项
+	window.navigator.geolocation.getCurrentPosition(function(position){
+		// 获取的纬度
+		var lat = position.coords.latitude;
+		// 获取的经度
+		var long = position.coords.longitude;
+	},function(error){
+		console.log(error);
+		if(error.code == 2){
+			console.log('获取地理位置失败，内部发生错误');
+		}else if(error.code == 3){
+			console.log('超时了');
+		}
+	},{
+		// 超时设置 单位是ms
+		timeout : 1000
+	});
+	</script>
+</body>
+</html>

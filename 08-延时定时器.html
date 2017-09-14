@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="button" value="开启" id="btn1">
+<input type="button" value="关闭" id="btn2">
+
+<script>
+
+
+  //参数1： 一个函数，  时间到了才会执行这个函数
+  //参数2： 延迟的时间  单位毫秒
+
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+
+  var timeId;
+
+  btn1.onclick = function () {
+
+    //定时器不是我们调用，我们只需要把函数的地址传过去，时间到了，window会自己调用。
+    //让一段代码延迟一段时间才执行。
+
+    //设置了一个定时器，会返回一个定时器id
+    timeId = setTimeout(function () {
+      console.log("Boom!");
+    }, 5000);
+  }
+
+
+  btn2.onclick = function () {
+    //清除定时器, 需要定时器id
+    clearTimeout(timeId);
+  }
+</script>
+</body>
+</html>

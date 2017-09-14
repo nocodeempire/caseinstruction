@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 绘制圆弧：
+    // 第1、2个参数：表示圆心点坐标
+    // 第3个参数：表示圆的半径
+    // 第4个参数：表示开始的弧度
+    // 第5个参数：表示结束的弧度
+    // 第6个参数：表示绘制方向，默认值为：false表示顺时针；设置为：true 表示逆时针
+    // ctx.arc(x, y, r, startRadian, endRadian [, counterclockwise]);
+
+    // 这个方法也是在描绘路径：
+    // context.arc(100, 100, 50, toRadian(0), toRadian(90));
+    // context.arc(100, 100, 50, toRadian(-90), toRadian(90));
+
+    // 绘制整圆：
+    context.arc(100, 100, 100, 0, Math.PI * 2);
+    context.stroke();
+    
+    // 弧度和角度：
+    // 在生活中，我们一般用角度，比较直观
+    // 但是在编程中，都是使用 弧度 的，所以，需要知道：角度和弧度的相互转换
+
+    // 1弧度 = 180度
+    // 弧度使用 π 符号来表示
+    // 在 js 中通过： Math.PI 获取到 π
+    
+    // 比例关系：
+    // 要计算的弧度 / Math.PI = 计算的角度 / 180度
+
+    // 弧度 = 角度 / 180 * Math.PI
+    // 角度 = 弧度 / Math.PI * 180
+
+    // 角度转弧度的方法：
+    function toRadian( angle ) {
+      return angle / 180 * Math.PI;
+    }
+
+    // 弧度转角度的方法：
+    function toAngle( radian ) {
+      return radian / Math.PI * 180;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .container {
+      width: 400px;
+      height: 200px;
+      border: 1px dotted red;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <canvas id="c"></canvas>
+  </div>
+  <script>
+    var cv = document.getElementById('c');
+    var context = cv.getContext('2d');
+
+    cv.width = 400;
+    cv.height = 200;
+
+    // 奖品设置
+    var prizesArr = [
+      { name: 'iPhone7 亮黑版', color: 'rgba(0, 0, 0, 1)' },
+      { name: 'iPhone7 黑色版', color: 'rgba(0, 0, 0, .9)' },
+      { name: 'iPhone7 安卓版', color: 'rgba(0, 255, 0, 1)' },
+      { name: 'iPhone7 塞班版', color: 'rgba(255, 0, 0, 1)' },
+      { name: '骑皮皮虾一次', color: 'rgba(255, 100, 66, 1)' },
+      { name: '班长抱一次', color: 'rgba(0, 255, 0, 1)' },
+    ];
+
+    /*
+      for(var i= 0; i < 100; i++) {
+        var prize = prizesArr[Math.floor(Math.random() * prizesArr.length)];
+        console.log(prize);
+      }
+    */
+
+    // 1 随机获取奖品，绘制奖品信息
+    var prize = prizesArr[Math.floor(Math.random() * prizesArr.length)];
+    context.font = '30px 微软雅黑';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(prize.name, cv.width / 2, cv.height / 2);
+
+    // 2 绘制遮罩层
+    context.fillStyle = 'silver';
+    context.fillRect(0, 0, cv.width, cv.height);
+
+    // 3 绑定鼠标事件
+    var flag = false;
+    cv.addEventListener('mousedown', function () {
+      flag = true;
+      // 新绘制的内容变为透明，原来的内容还保留着
+      context.globalCompositeOperation = 'destination-out';
+    });
+
+    cv.addEventListener('mousemove', function (e) {
+      if (!flag) {
+        return;
+      }
+      context.beginPath();
+      
+      // globalCompositeOperation
+      // 作用：用来指定两个图形重叠部分展示的效果
+
+      // 鼠标移动执行的操作
+      // console.log(e.offsetX, e.offsetY);
+      // context.fillStyle = 'transparent';
+      context.arc(e.offsetX, e.offsetY, 20, 0, Math.PI * 2);
+      context.fill();
+
+    });
+
+    cv.addEventListener('mouseup', function () {
+      flag = false;
+      context.globalCompositeOperation = 'source-over';
+    });
+  </script>
+</body>
+
+</html>

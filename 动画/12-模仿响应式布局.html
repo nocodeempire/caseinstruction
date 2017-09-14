@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  
+  responsive();
+  
+  
+  
+  //媒体查询  media query  CSS也能拿到页面的宽度
+  window.onresize = function () {
+    responsive();
+  }
+  
+  function responsive() {
+    var pageWidth = getClientWidth();
+    if(pageWidth >= 960){
+      //说明是pc
+      document.body.style.backgroundColor = "pink";
+    }else if(pageWidth >= 640){
+      //说明是平板
+      document.body.style.backgroundColor = "hotpink";
+    }else {
+      document.body.style.backgroundColor = "deeppink";
+    }
+  }
+
+  function getClientWidth() {
+    return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth || 0;
+  }
+  
+  
+</script>
+
+</body>
+</html>

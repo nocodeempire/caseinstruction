@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // requestAnimationFrame( fn ) 方法只要调用一次
+    // 那么，下一次 函数fn 就会继续执行
+    // 如果想让 requestAnimationFrame 停下来，只要不再调用 requestAnimationFrame()
+    // 方法，那么 requestAnimationFrame 就停下来了
+    /*var count = 0;
+    function fn() {
+      console.log(123);
+      count++;
+      if (count <= 3) {
+        requestAnimationFrame(fn);
+      }
+    }
+    fn();*/
+
+    // 第一个参数：回调函数
+    // 第二个参数：时间间隔 Δt
+
+
+    function raf(callback, delta) {
+      // 每隔 delta 时间，就调用一下回调函数
+
+      // 上一次调用的时间
+      var lastFrameTime = new Date();
+
+      function fn() {
+        // console.log(123);
+
+        // 获取当前调用的时间
+        var curFrameTime = new Date();
+        if (curFrameTime - lastFrameTime >= delta) {
+          callback();
+
+          // 每次调用 callback ，都将参考时间（lastFrameTime）
+          // 也就是上一次调用 callback的时间设置为：curFrameTime
+          lastFrameTime = curFrameTime;
+        }
+
+        requestAnimationFrame(fn);
+      }
+      fn();
+    }
+
+    raf(function () {
+      console.log(123);
+    }, 500);
+  </script>
+</body>
+
+</html>

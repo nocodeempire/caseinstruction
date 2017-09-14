@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    // console.log( context );
+    
+    // canvas画布，HTML5中提供的一个新标签, 本身不具备绘图能力
+    // 作用: 展示绘制内容
+    // 通过 JS的API绘制内容, 展示在画布中
+
+    // 设置canvas的高度和宽度:
+    // 1 通过 HTML元素的width和height属性
+    // 2 通过 DOM对象的 width和height属性
+
+    // 绘图上下文, 就是一个普通的对象, 对象中具有一些属性( 绘制状态 )
+    // 原型对象中提供了一些 绘图API( 方法 )
+    // 
+    // var ctx = canvas.getContext('2d');
+
+    // moveTo(x, y) / lineTo(x, y)
+    // stroke(); 描边, 将描绘的所有路径绘制到画布中
+    // fill();   填充, 将描绘的所有路径填充起来
+    // closePath(); 闭合路径, 在起始点和结束点之前做一条连线
+
+    // 绘制状态:
+    // 1 strokeStyle / fillStyle 设置绘制的颜色
+    // 2 lineWidth 设置线宽
+
+    // Canvas 是基于状态绘图的!
+    // 只要设置了状态, 接下来都是基于这个状态绘制图形的
+
+    // beginPath();
+    // 作用: 开启新路径, 以后再绘制的内容(fill/stroke) 都不会再绘制 beginPath()
+    //       之前描绘的路径了!
+
+    // 路径 和 状态 是没有任何关系的!
+
+  </script>
+</body>
+</html>

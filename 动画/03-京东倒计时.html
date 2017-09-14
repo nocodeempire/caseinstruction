@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .time {
+      width: 140px;
+      height: 40px;
+      margin: 100px auto;
+      line-height: 40px;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    
+    #h, #m, #s {
+      float: left;
+      display: block;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      background-color: #440106;
+      color: red;
+      border-radius: 5px;
+    }
+    
+    .split {
+      width: 10px;
+      float: left;
+      text-align: center;
+    }
+  
+  
+  </style>
+</head>
+<body>
+<div class="time">
+  <span id="h">00</span>
+  <span class="split">:</span>
+  <span id="m">00</span>
+  <span class="split">:</span>
+  <span id="s">00</span>
+</div>
+
+<script>
+  
+  //找对象
+  var h = document.getElementById("h");
+  var m = document.getElementById("m");
+  var s = document.getElementById("s");
+  
+  setTime();
+  var timer = setInterval(setTime, 1000);
+  
+  function setTime() {
+    //需要一个时间差
+    var nowTime = new Date();//当前时间
+    var seckillTime = new Date("2017-05-11 09:29:00");//秒杀时间
+  
+    var time = parseInt((seckillTime - nowTime)/1000);
+    //如果计算的时间差小于0 或者已经等于0了，清除定时器
+    if(time <= 0) {
+      time = 0;
+      clearInterval(timer);
+    }
+  
+    //需要把time转换成小时
+    var hours = parseInt(time/3600);
+    h.innerHTML = addZero(hours);
+  
+    //需要把time转换成分钟
+    var minutes = parseInt(time/60)%60;
+    m.innerHTML = addZero(minutes);
+  
+    //time转换成秒钟
+    var seconds = time%60;
+    s.innerHTML = addZero(seconds);
+  }
+  function addZero (num) {
+    return num < 10? "0"+num : num;
+  }
+</script>
+</body>
+</html>

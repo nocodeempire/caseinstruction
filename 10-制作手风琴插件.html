@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    #box {
+      width: 800px;
+      height: 200px;
+      border: 1px solid #000;
+      margin: 100px auto;
+    }
+    
+    ul {
+      width: 1300px;
+    }
+    
+    #box li {
+      height: 200px;
+      float: left;
+    }
+  
+  </style>
+</head>
+<body>
+
+
+<div id="box">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+
+<script src="jquery-1.12.4.js"></script>
+<script src="plugins/jquery.accordion.js"></script>
+<script>
+
+  $(function () {
+    
+    var arr = ["red", "pink", "yellow", "green", "cyan", "purple", "orange", "black"];
+    $("#box").accordion({
+      colors:arr,
+      minWidth:50
+    });
+    
+  })
+  
+</script>
+
+</body>
+</html>

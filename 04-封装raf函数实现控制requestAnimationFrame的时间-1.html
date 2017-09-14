@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 封装 raf 模拟 setInterval
+    function raf(callback, delta) {
+      // 上一次调用的时间
+      var lastFrameTime = new Date();
+
+      // 函数fn会随着浏览器刷新而调用
+      function fn() {
+        // 获取当前调用的时间
+        var curFrameTime = new Date();
+        // 判断是否达到时间间隔
+        if (curFrameTime - lastFrameTime >= delta) {
+          // 调用回调函数
+          callback();
+          // 重置上一帧时间
+          lastFrameTime = curFrameTime;
+        }
+
+        // 告诉浏览器下一帧绘制前，调用指定的回调函数 fn
+        requestAnimationFrame(fn);
+      }
+      fn();
+    }
+
+    raf(function () {
+      console.log(123);
+    }, 1000);
+  </script>
+</body>
+
+</html>

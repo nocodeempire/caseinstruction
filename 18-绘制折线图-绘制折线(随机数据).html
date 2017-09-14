@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 600;
+    cv.width = 1000;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 绘制折线图：
+
+    // 1 绘制坐标轴：
+    var padding = 30,       // 坐标轴与画布的间距
+      cvW = cv.width,       // 画布的宽度
+      cvH = cv.height,      // 画布的高度
+      arrowLen = 15,        // 箭头的长度
+      yLen = 0,
+      xLen = 0,
+      maxHeight = 0,
+      maxLength = 0,
+      pointWidth = 0,
+      data;
+
+    // 1.1 计算 y轴的长度：
+    yLen = cvH - 2 * padding;
+
+    // 1.2 绘制 y轴
+    context.moveTo(padding, padding);
+    context.lineTo(padding, padding + yLen);
+
+    // 1.3 绘制 y轴箭头 ---> \
+    context.moveTo(padding, padding);
+    context.lineTo(padding + arrowLen, padding + arrowLen);
+    // 绘制 y轴箭头 ---> /
+    context.moveTo(padding, padding);
+    context.lineTo(padding - arrowLen, padding + arrowLen);
+
+    // 1.4 计算 x轴的长度
+    xLen = cvW - 2 * padding;
+
+    // 1.5 绘制 x轴
+    context.moveTo(padding, padding + yLen);
+    context.lineTo(padding + xLen, padding + yLen);
+
+    // 1.6 绘制 x轴箭头 \
+    context.lineTo(padding + xLen - arrowLen, padding + yLen - arrowLen);
+
+    // 1.7 绘制 x轴箭头 /
+    context.moveTo(padding + xLen, padding + yLen);
+    context.lineTo(padding + xLen - arrowLen, padding + yLen + arrowLen);
+
+    context.stroke();
+
+    // 开启新路径：
+    context.beginPath();
+
+    // 绘制折线：
+    // 数据，每个数据表示占据最大高度的比值（y轴）
+    // data = [0.1, 0.2, 0.35, 0.55, 0.77, 0.9, 0.6, 0.1];
+
+    // 1 随机生成数据( 区间: 100 - 500 )
+    // 2 计算随机数中的最大值
+    // 3 将每一个数与最大值比较获取到比值
+    var tempArr = [];
+    for (var i = 0; i < 10; i++) {
+      tempArr.push(Math.random() * 400 + 100);
+    }
+
+    // 借用方法求最大值:
+    var maxNum = Math.max.apply(null, tempArr) + 100;
+    data = tempArr.map(function (value) {
+      return value / maxNum;
+    });
+    // console.log(data);
+
+
+    // 最大高度：垂直方向
+    maxHeight = cvH - 2 * padding - arrowLen;
+    // 最大长度：水平方向
+    maxLength = cvW - 2 * padding - arrowLen;
+    // 两点之间的距离：
+    pointWidth = maxLength / (data.length + 1);
+
+    // 折线中每个点的y坐标： cvH - maxHeight * data[i] - padding
+    // 折线中每个点的x坐标： (i + 1) * pointWidth + padding
+
+    function getY(i) {
+      return cvH - maxHeight * data[i] - padding;
+    }
+    function getX(i) {
+      return (i + 1) * pointWidth + padding;
+    }
+
+    data.forEach(function (value, index) {
+      var x = getX(index);
+      var y = getY(index);
+
+      // 如果没有 moveTo() 即没有起始点
+      // 那么, 第一个lineTo()就被当作: moveTo()
+      context.lineTo(x, y);
+    });
+
+    context.stroke();
+  </script>
+</body>
+
+</html>

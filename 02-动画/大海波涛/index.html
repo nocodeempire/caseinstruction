@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        	* {
+        		margin: 0;
+        		padding: 0;
+        	}
+
+        	html,body {
+        		width: 100%;
+        		height: 100%;
+        	}
+        	.box {
+        		 width: 100%;
+        		 height: 100%;
+        		 background-color: #0EA9B1;
+        		 position: relative;
+        		 overflow: hidden;
+        	}
+
+        	.box img {
+        		 position: absolute;
+        		 width: 100%;
+        		 bottom: 0;
+        	}
+
+        	.sun {
+        		 width: 80px;
+        		 height: 80px;
+        		 background-color: #fff;
+        		 border-radius: 50%;
+        		 position: absolute;
+        		 left: 100px;
+        		 top: 50px;
+        	}
+        	.sun:after {
+        		 content: "";
+        		 display: block;
+        		 width: 100px;
+        		 height: 100px;
+        		 border-radius: 50%;
+        		 background-color: rgba(255,255,255,.6);
+        		 position: absolute;
+        		 left: 50%;
+        		 top: 50%;
+        		 margin-left: -50px;
+        		 margin-top: -50px;
+        		 animation: scale 1s linear infinite alternate;
+        	}
+
+        	.sun:before {
+        		content: "";
+        		display: block;
+        		width: 120px;
+        		height: 120px;
+        		border-radius: 50%;
+        		background-color: rgba(255,255,255,.4);
+        		position: absolute;
+        		left: 50%;
+        		top: 50%;
+        		margin-left: -60px;
+        		margin-top: -60px;
+        		animation: scale 2s 1s linear infinite alternate;
+        	}
+
+			@keyframes scale {
+				from {
+					transform: scale(1);
+				}
+
+				to {
+					transform: scale(1.2);
+				}
+			}
+
+			@keyframes move{
+				 from {
+				 	 bottom: 0px;
+				 }
+
+				 to {
+				 	 bottom: -60px;
+				 }
+			}
+
+			img:nth-child(2){
+				 animation: move 1s linear infinite alternate;
+			}
+
+			img:nth-child(3) {
+				 animation: move 2s 1s linear infinite alternate;
+			}
+        </style>
+    </head>
+    <body>
+		 <div class="box">
+		 	  <div class="sun"></div>
+		 	  <img src="img/1.png" alt="">
+		 	  <img src="img/2.png" alt="">
+		 </div>
+    </body>
+</html>

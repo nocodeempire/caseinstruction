@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<div>呵呵</div>
+
+
+<div>哈哈</div>
+
+<input type="button" value="动态生成" id="btn">
+
+
+<script>
+  document.write("<h3>我也是一个大标题</h3>");
+</script>
+<script>
+
+  var btn = document.getElementById("btn");
+  btn.onclick = function () {
+    document.write("<h3>我是一个大标题</h3>")
+  };
+
+</script>
+</body>
+</html>

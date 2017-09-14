@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      
+    }
+  </style>
+</head>
+<body>
+
+<input type="button" value="按钮" id="btn">
+<div id="box"></div>
+
+<script>
+  var btn = document.getElementById("btn");
+  var box = document.getElementById("box");
+  var timer = null;
+  btn.onclick = function () {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      var target = 400;
+      
+      //offsetLeft获取值的时候，会对小数四舍五入 1px
+      var leader = box.offsetLeft;
+      
+      var step = (target - leader) / 10;
+      //对step向上取整，保证每一次最少都走1px
+      step = Math.ceil(step);
+      leader += step;
+      box.style.left = leader + "px";
+      
+      if (leader == target) {
+        clearInterval(timer);
+      }
+    }, 15);
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 绘制图片：
+    // 用法1: 
+    // 第一个参数:表示要绘制的图片对象( DOM对象 )
+    // 第二/三个参数:表示绘制到画布的中的坐标
+    // ctx.drawImage(imgObj, x, y);
+
+    // 用法2: 
+    // 第一个参数:表示要绘制的图片对象( DOM对象 )
+    // 第二/三个参数:表示绘制到画布的中的坐标
+    // 第4/5个参数:表示绘制到画布中宽度和高度
+    // ctx.drawImage(imgObj, x, y, w, h);
+
+    // 用法3: 
+    // 第一个参数: 图片对象
+    // 第2/3个参数: 剪裁图片中的坐标
+    // 第4/5个参数: 剪裁图片中的宽度和高度
+    // 第6/7个参数: 绘制到画布中的坐标
+    // 第8/9个参数: 绘制到画布中的宽度和高度
+    // ctx.drawImage(imgObj, imgX, imgY, imgW, imgH, drawX, drawY, drawW, drawH);
+
+    // 怎么创建图片对象???
+    // 1 var img = document.createElement('img');
+
+    // 1 创建图片对象
+    var img = document.createElement('img');
+    // 2 设置src路径
+    img.src = './imgs/2.jpg';
+    // 3 等待图片加载完成( load )
+    img.onload = function () {
+      // 4 绘制图
+      // 4.1 
+      // context.drawImage(img, 100, 100);
+
+      // 4.2 
+      /*var imgW = this.width,    // 图片的原始宽度
+        imgH = this.height;     // 图片的原始高度
+      // 图片的高度 / 图片的宽度 = 绘制的高度 / 绘制的宽度
+      context.drawImage(img, 100, 100, 400, imgH / imgW * 400);*/
+
+      // 4.3
+      context.drawImage(img, 710, 330, 140, 90, 0, 0, 140, 90);
+    };
+  </script>
+</body>
+
+</html>

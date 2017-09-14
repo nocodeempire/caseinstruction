@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    body {
+      padding-left: 100px;
+    }
+    
+    #beauty {
+      overflow: hidden;
+      margin: 50px 0;
+    }
+    
+    #beauty li {
+      float: left;
+      margin-right: 30px;
+    }
+    
+    #beauty img {
+      width: 100px;
+    }
+    
+    #bigImg {
+      width: 400px;
+      height: 250px;
+    }
+    
+  </style>
+</head>
+<body>
+
+<h1>美女相册</h1>
+
+<ul id="beauty">
+  <li>
+    <a href="images/1.jpg" title="美女1">
+      <img src="images/1-small.jpg" alt="">
+    </a>
+  </li>
+  <li>
+    <a href="images/2.jpg"  title="美女2">
+      <img src="images/2-small.jpg" alt="">
+    </a>
+  </li>
+  <li>
+    <a href="images/3.jpg"  title="美女3">
+      <img src="images/3-small.jpg" alt="">
+    </a>
+  </li>
+  <li>
+    <a href="images/4.jpg"  title="美女4">
+      <img src="images/4-small.jpg" alt="">
+    </a>
+  </li>
+</ul>
+
+<img src="images/placeholder.png" id="bigImg">
+
+<p id="des">这是描述</p>
+
+
+<script>
+  //1. 找对象
+  var beauty = document.getElementById("beauty");
+  var links = beauty.getElementsByTagName("a");
+  var bigImg = document.getElementById("bigImg");
+  var des = document.getElementById("des");
+
+  //2. 给所有的a注册点击事件
+  for(var i = 0; i < links.length; i++) {
+    links[i].onclick = function () {
+
+      //3. 换大图片的src, 就是点击的那个a的href属性。
+      bigImg.src = this.href;
+      //4. 设置p标签的内容
+      des.innerHTML = this.title;
+
+      //阻止a标签跳转
+      return false;
+    };
+  }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

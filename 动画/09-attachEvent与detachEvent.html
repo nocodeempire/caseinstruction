@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  
+  
+  function fn() {
+    console.log("呵呵");
+  }
+  
+  addEvent(document, "click", fn);
+  
+  
+  function addEvent(element, type, fn) {
+    if (element.addEventListener) {
+      element.addEventListener(type, fn);
+    } else {
+      element.attachEvent("on"+type, fn);
+    }
+  }
+  
+  function removeEvent(element, type, fn){
+    if (element.addEventListener) {
+      element.removeEventListener(type, fn);
+    } else {
+      element.detachEvent("on"+type, fn);
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      height: 4000px;
+    }
+    
+    #ts {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<img src="images/tianshi.gif" id="ts" alt="">
+
+<script>
+  
+  //IE678
+  //onscroll  onresize  :给window注册
+  // onclick  onmousemove : document注册
+  
+  var ts = document.getElementById("ts");
+  //给document注册一个鼠标移动事件
+  document.onmousemove = function (e) {
+    e = e || window.event;
+    //console.log(e.pageX + "   " + e.pageY);
+    ts.style.left = getPageX(e) + "px";
+    ts.style.top = getPageY(e) + "px";
+  }
+  
+  
+  
+//  function getPageY(e) {
+//    return e.pageY || e.clientY + document.documentElement.scrollTop;
+//  }
+//
+//  function getPageX(e) {
+//    return e.pageX || e.clientX + document.documentElement.scrollLeft;
+//  }
+  
+  
+  function getPage(e) {
+    return {
+      x : e.pageX || e.clientX + document.documentElement.scrollLeft,
+      y : e.pageY || e.clientY + document.documentElement.scrollTop
+    }
+  }
+</script>
+</body>
+</html>

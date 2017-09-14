@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+<input type="button" value="按钮">
+
+<script>
+
+  var inputs = document.getElementsByTagName("input");
+
+  for(var i = 0; i < inputs.length; i++) {
+
+
+    //给标签加自定义属性
+    //inputs[i].setAttribute("index", i);
+
+
+    inputs[i].index = i;
+
+    inputs[i].onclick = function () {
+      //alert("呵呵");
+      //当前索引
+      //alert(this.getAttribute("index"));
+
+
+      alert(this.index)
+    }
+  }
+
+</script>
+
+</body>
+</html>

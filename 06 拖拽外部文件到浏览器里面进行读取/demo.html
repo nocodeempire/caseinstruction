@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.info {
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			line-height: 500px;
+			text-align: center;
+			transform:translate(-50%,-50%);
+			box-shadow: 0 0 10px 2px rgba(0,0,0,.5); 
+			border-radius: 5px;
+		}
+		.info img {
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	
+	<!-- 目标元素 -->
+	<div class="info">将图片拖拽至此</div>
+	
+
+	<script type="text/javascript">
+
+	var info = document.querySelector('.info');
+	// 获取html元素
+	var oHtml = document.documentElement;
+
+	// 问题：浏览器默认会将外部拖拽的文件直接打开，我们需要阻止掉
+	// 将外部文件拖拽进浏览器里面松开鼠标的时候其实就是在html页面上触发了drop事件，我们只需要在drop事件的时候阻止默认事件
+	oHtml.ondrop = function(e){
+		// 阻止默认事件
+		e.preventDefault();
+	}
+	/*drop事件默认是被阻止的，所以还需要在dragover的时候阻止默认事件*/
+	oHtml.ondragover = function(e){
+		e.preventDefault();
+	}
+
+	info.ondrop = function(e){
+		// 获取外部拖拽进来的文件
+		// console.log(e);
+		var data = e.dataTransfer.files[0];		
+		var fr = new FileReader();
+		fr.readAsDataURL(data);
+		fr.addEventListener('load',function(){
+			var result = fr.result;
+			var img = document.createElement('img');
+			img.src = result;
+			info.innerHTML = '';
+			info.appendChild(img);
+		})
+	}
+	</script>
+</body>
+</html>

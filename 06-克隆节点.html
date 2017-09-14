@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div id="box">
+  我是div的内容
+  <span>呵呵</span>
+</div>
+
+<p id="des">我是外面的一个p元素</p>
+
+<script>
+
+  var des = document.getElementById("des");
+  var box = document.getElementById("box");
+
+
+  box.appendChild(des);
+
+//  //clone:克隆  node节点
+//  //cloneNode: 在内存中克隆一份节点  ，还需要添加
+//  // 参数：false　浅复制　　　只会复制标签，不会复制内容
+//  // 参数：true   深复制     所有的东西都会复制
+//  var newP = des.cloneNode(true);
+//  newP.id = "des1";//修改了id，防止id冲突
+//  console.log(newP);
+//
+//
+//  //把newP添加到box的子节点的最后面
+//  box.appendChild(newP);
+</script>
+
+</body>
+</html>

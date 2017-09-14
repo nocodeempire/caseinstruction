@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    select {
+      width: 100px;
+      height: 400px;
+      background-color: teal;
+      font-size: 20px;
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+
+<select id="src" multiple>
+  <option>丫丫</option>
+  <option>野百合</option>
+  <option>宋仲基</option>
+  <option>胡歌</option>
+  <option>薛之谦</option>
+  <option>郑爽</option>
+  <option>周杰伦</option>
+  <option>张学路</option>
+</select>
+
+<input type="button" value=">>" id="btn1">
+<input type="button" value="<<" id="btn2">
+<input type="button" value=">" id="btn3">
+<input type="button" value="<" id="btn4">
+
+<select id="tar" multiple></select>
+
+
+<script>
+
+  //1. 找对象
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var btn3 = document.getElementById("btn3");
+  var btn4 = document.getElementById("btn4");
+  var src = document.getElementById("src");
+  var tar = document.getElementById("tar");
+
+
+  //2. 全部往右边
+  btn1.onclick = function () {
+    //获取左边所有的option， 添加到右边去
+    var options = src.children;
+    for(var i = 0; i < options.length;i++) {
+      //添加到右边
+      tar.appendChild(options[i]);
+      i--;
+    }
+  };
+
+
+  //3. 全部往左边
+  btn2.onclick = function () {
+    //获取左边所有的option， 添加到右边去
+    var options = tar.children;
+    for(var i = 0; i < options.length;i++) {
+      //添加到右边
+      src.appendChild(options[i]);
+      i--;
+    }
+  };
+
+
+  //4. 选中的往右边
+  btn3.onclick = function () {
+
+    var options = src.children;
+    for(var i = 0; i < options.length;i++) {
+      //不能全部到右边， 需要看options[i]选中没选中
+      if(options[i].selected){
+        tar.appendChild(options[i]);
+        i--;
+      }
+    }
+  };
+
+
+  //5. 选中的往左边
+  btn4.onclick = function () {
+
+    var options = tar.children;
+    for(var i = 0; i < options.length;i++) {
+      //不能全部到右边， 需要看options[i]选中没选中
+      if(options[i].selected){
+        src.appendChild(options[i]);
+        i--;
+      }
+    }
+  };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  
+  //^ 如果直接写在//里头，表示开头  如果写在[]里头，表示取反
+  //console.log(/^foot/.test("aaafoot"));
+  //console.log(/^foot/.test("footaaa"));
+  
+  //console.log(/^chuan/.test("dachuan"));//false
+  //console.log(/^chuan/.test("chuang"));//true
+  //console.log(/^chuan/.test("dachuang"));//false
+  //console.log(/^chuan/.test("chuanchuan"));//true
+  
+  
+  //$表示结尾， 注意不要写成&
+  //  console.log(/chuan$/.test("dachuan"));//true
+  //  console.log(/chuan$/.test("chuang"));//false
+  //  console.log(/chuan$/.test("dachuang"));//false
+  //  console.log(/chuan$/.test("chuanchuan"));//true
+  
+  
+  //^ $一起写表示精确匹配
+//  console.log(/^chuan$/.test("dachuan"));//false
+//  console.log(/^chuan$/.test("chuang"));//false
+//  console.log(/^chuan$/.test("dachuang"));//false
+//  console.log(/^chuan$/.test("chuanchuan"));//true false
+//  console.log(/^chuan$/.test("chuan"));//true
+  
+  
+  console.log(/^\d$/.test("1111"));
+  console.log(/^\d$/.test("1"));
+  console.log(/^\d$/.test("2"));
+  console.log(/^\d$/.test("3"));
+  
+</script>
+</body>
+</html>

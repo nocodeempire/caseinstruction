@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>我是标题</title>
+  <style>
+    body {
+      height: 4000px;
+      width: 4000px;
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  //scroll事件给window注册
+  window.onscroll = function () {
+    //现代浏览器，获取页面的scrollTop的时候使用window.pageYOffset
+    //IE678 获取页面的scrollTop的时候，用的是 document.documentElement.scrollTop
+    
+    
+    console.log(getScroll().top + " " + getScroll().left);
+  }
+  
+  
+  function getScrollTop() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+  
+  function getScrollLeft() {
+    return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+  }
+  
+  function getScroll() {
+    return {
+      left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+      top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
+    }
+  }
+</script>
+
+</body>
+</html>

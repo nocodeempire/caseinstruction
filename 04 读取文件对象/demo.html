@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="file" name="" id="">
+	<button>点击读取文件</button>
+
+	<script type="text/javascript">
+	var btn = document.querySelector('button');
+	var file = document.querySelector('input[type="file"]');
+
+	btn.onclick = function(){
+		// file.value 这个仅仅是一个字符串，图片的本地路径
+		// var data = file.value;
+		console.dir(file);
+		// 获取真正的图片对象
+		var data = file.files[0];
+		// 创建一个读取对象
+		var fr = new FileReader();
+		// 读取文件
+		
+		fr.readAsDataURL(data);
+		// 读取文件是一个耗时的操作，所以需要用事件监听读取完毕，
+		// load事件是文件读取完毕之后触发的事件
+		fr.addEventListener('load', function(){
+			//获取读取的结果  
+			//result属性里面存储的就是读取文件的结果
+			var result = fr.result;	
+			// 创建图片对象
+			var img = document.createElement('img');
+			img.src = result;
+			document.body.appendChild(img); 
+		})
+	}
+
+	</script>
+</body>
+</html>

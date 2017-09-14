@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  //递归；函数直接或者间接调用自己。必须要留出口，不然就调死了。
+  //  var count = 0;
+  //  function fn(){
+  //    count++;
+  //    console.log("从前有座山");
+  //    console.log("山里有座庙");
+  //    console.log("庙里有个老和尚");
+  //    console.log("有一天，老和尚给小和尚讲故事");
+  //
+  //    if(count <= 5){
+  //      fn();
+  //    }
+  //
+  //  }
+  //
+  //
+  //  fn();
+
+
+  //复杂的问题简单化 getSum(2)   = 3
+  //1-100之间所有数的和
+  //getSum(100)
+  //100 + getSum(99)
+  //100 + 99 + getSum(98)
+//  function getSum(n){
+//    if(n == 1){
+//      return 1;
+//    }
+//    return n + getSum(n-1);
+//  }
+//
+//  console.log(getSum(100));
+
+
+
+  //兔子数 ： 第三个月开始， 每个月的兔子 = 前1个月 + 前2个月
+  function getTu(n) {
+    if(n == 1 || n == 2){
+      return 1;
+    }
+    return getTu(n-1) + getTu(n-2);
+  }
+  console.log(getTu(100));
+
+
+</script>
+
+</body>
+</html>

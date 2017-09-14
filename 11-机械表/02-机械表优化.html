@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .clock {
+      width: 600px;
+      height: 600px;
+      margin: 100px auto;
+      background: url(images/clock.jpg) no-repeat;
+      position: relative;
+    }
+    
+    .clock div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(images/hour.png) no-repeat center center;
+    }
+    
+    #m {
+      background-image: url(images/minute.png);
+    }
+    
+    #s {
+      background-image: url(images/second.png);
+      /*让盒子旋转*/
+      /*transform: rotate(30deg);*/
+    }
+  </style>
+</head>
+<body>
+<div class="clock">
+  <div id="h"></div>
+  <div id="m"></div>
+  <div id="s"></div>
+</div>
+
+
+<script>
+  var h = document.getElementById("h");
+  var m = document.getElementById("m");
+  var s = document.getElementById("s");
+
+  function setTime() {
+    //1. 获取到当前的时间
+    var date = new Date();
+
+    //2. 设置秒钟
+    var seconds = date.getSeconds() + date.getMilliseconds()/1000;
+    s.style.transform = "rotate(" + 6 * seconds + "deg)";
+
+
+    //3. 设置分钟
+    var minutes = date.getMinutes() + seconds/60;
+    m.style.transform = "rotate(" + 6 * minutes + "deg)";
+
+    //4. 设置小时    + minutes/60
+    var hours = date.getHours() + minutes/60;
+    h.style.transform = "rotate(" + 30 * hours + "deg)";
+
+
+
+
+  }
+
+
+  //页面一加载就执行一次
+  setTime();
+
+  //让window每隔一秒钟执行一次  1秒钟 分成 25份就已经有动画效果   分成60份，很细腻
+  setInterval(setTime, 15);
+
+
+
+
+</script>
+</body>
+</html>

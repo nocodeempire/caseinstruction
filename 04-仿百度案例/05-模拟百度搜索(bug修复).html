@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    fieldset, img, input, button {
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline-style: none;
+    }
+    
+    ul, ol {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+    
+    #box {
+      width: 405px;
+      margin: 200px auto;
+      position: relative;
+    }
+    
+    #txtSearch {
+      float: left;
+      width: 300px;
+      height: 32px;
+      padding-left: 4px;
+      border: 1px solid #b6b6b6;
+      border-right: 0;
+    }
+    
+    #btnSearch {
+      float: left;
+      width: 100px;
+      height: 34px;
+      font: 400 14px/34px "microsoft yahei";
+      color: white;
+      background: #3385ff;
+      cursor: pointer;
+    }
+    
+    #btnSearch:hover {
+      background: #317ef3;
+    }
+    
+    #pop {
+      width: 303px;
+      border: 1px solid #ccc;
+      padding: 0px;
+      position: absolute;
+      top: 34px;
+    }
+    
+    #pop ul li {
+      padding-left: 5px;
+    }
+    
+    #pop ul li:hover {
+      background-color: #CCC;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <input type="text" id="txtSearch">
+  <input type="button" value="百度一下" id="btnSearch">
+  <!--<div id="pop">-->
+  <!--<ul>-->
+  <!--<li>凤姐</li>-->
+  <!--<li>芙蓉</li>-->
+  <!--<li>西施</li>-->
+  <!--<li>貂蝉</li>-->
+  <!--</ul>-->
+  <!--</div>-->
+</div>
+
+<script>
+
+
+  //找对象
+  var txtSearch = document.getElementById("txtSearch");
+  var box = document.getElementById("box");
+
+  var datas = ["a", "abc", "abbbb", "abxxxx", "xyz", "abcdef", "abzzzz", "axxx", "aaabbb", "中", "中国", "中国人", "我是中国人"];
+
+  txtSearch.onkeyup = function () {
+    var arr = [];
+    var content = txtSearch.value; //""
+
+    for (var i = 0; i < datas.length; i++) {
+      if (datas[i].indexOf(content) != -1) {
+        arr.push(datas[i]);
+      }
+    }
+
+    //每一次事件触发，都会创建div ul li
+    //如果发现box中已经存在pop了，就删除它， 因为马上就要创建新的了。
+    var pop = document.getElementById("pop");
+    if (pop) {
+      //存在
+      box.removeChild(pop);
+    }
+
+
+    //生成div的前提是 arr有长度
+    if(arr.length == 0 || content == "") {
+      return;
+    }
+
+    var div = document.createElement("div");
+    div.id = "pop";
+    box.appendChild(div);
+
+    var ul = document.createElement("ul");
+    div.appendChild(ul);
+
+    for (var i = 0; i < arr.length; i++) {
+      var li = document.createElement("li");
+      ul.appendChild(li);
+      li.innerHTML = arr[i];
+    }
+  };
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    
+    // 绘制填充图形
+    // ctx.fill();
+
+    context.moveTo(100, 100);
+    context.lineTo(200, 100);
+    context.lineTo(200, 200);
+    context.lineTo(100, 200);
+    // context.lineTo(100, 100);
+
+    // 作用：闭合路径，在起始点和结束点之间做一条连线，将路径闭合
+    context.closePath();
+
+    // 作用：绘制描边图形
+    context.stroke();
+
+    // 作用：绘制填充图形
+    // 特点：能够将形状闭合（在起始点和结束点之间做一条连线来闭合图形，再填充）
+    // context.fill();
+    
+    
+  </script>
+</body>
+</html>

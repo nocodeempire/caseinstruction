@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .box {
+      width: 350px;
+      height: 350px;
+      margin: 100px;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+    
+    .big {
+      width: 400px;
+      height: 400px;
+      position: absolute;
+      top: 0;
+      left: 360px;
+      border: 1px solid #ccc;
+      overflow: hidden;
+      display: none;
+    }
+    
+    .mask {
+      width: 175px;
+      height: 175px;
+      background: rgba(255, 255, 0, 0.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: move;
+      display: none;
+    }
+    
+    .small {
+      position: relative;
+    }
+    
+    .box img {
+      vertical-align: top;
+    }
+    
+    #bigBox img {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<div class="box" id="box">
+  
+  <div id="smallBox" class="small">
+    <img src="images/001.jpg" width="350" alt=""/>
+    
+    <div id="mask" class="mask"></div>
+  </div>
+  <div id="bigBox" class="big">
+    <img src="images/0001.jpg" width="800" id="bigImg" alt=""/>
+  </div>
+</div>
+
+<script>
+  var box = document.getElementById("box");
+  var smallBox = document.getElementById("smallBox");
+  var mask = document.getElementById("mask");
+  var bigBox = document.getElementById("bigBox");
+  var bigImg = document.getElementById("bigImg");
+  //鼠标经过smallBox，显示mask和bigBox
+  smallBox.onmouseover = function () {
+    mask.style.display = "block";
+    bigBox.style.display = "block";
+  }
+  
+  //鼠标离开smallBox，隐藏mask和bigBox
+  smallBox.onmouseout = function () {
+    mask.style.display = "none";
+    bigBox.style.display = "none";
+  }
+  
+  //鼠标在smallBox里面移动，移动mask和bigImg
+  smallBox.onmousemove = function (e) {
+    // mask跟着鼠标跑
+    //获取到鼠标在smallBox里面的位置
+    e = e || window.event;
+    var spaceX = getPage(e).x - box.offsetLeft;
+    var spaceY = getPage(e).y - box.offsetTop;
+    
+    var x = spaceX - mask.offsetWidth / 2;
+    var y = spaceY - mask.offsetHeight / 2;
+    
+    if(x <= 0) {
+      x = 0;
+    }
+    
+    if(y <= 0) {
+      y = 0;
+    }
+    
+    //mask在小盒子里面能够移动最大的宽度
+    var maskMaxX = smallBox.offsetWidth - mask.offsetWidth;
+    var maskMaxY = smallBox.offsetHeight - mask.offsetHeight;
+    if(x >= maskMaxX) {
+      x = maskMaxX;
+    }
+    
+    if(y >= maskMaxY) {
+      y = maskMaxY;
+    }
+    
+    mask.style.left = x + "px";
+    mask.style.top = y + "px";
+    
+    //让大图片等比例的跟着移动
+    //我:10分钟能吃10个饺子
+    //亮亮：10分钟能吃100个饺子
+    //我吃完第4个饺子的时候， 亮亮要吃完多少个：40
+    //亮亮能吃的总的饺子数/我能吃的总的饺子数 = 亮亮吃完的饺子数/我吃完的饺子数
+    //大图片能移动的总距离/mask能移动的总距离 = 大图片移动的距离/mask移动的距离
+    var xRate = (bigImg.offsetWidth - bigBox.offsetWidth)/maskMaxX;
+    bigImg.style.left = - xRate * x + "px";
+    var yRate = (bigImg.offsetHeight - bigBox.offsetHeight)/maskMaxY;
+    bigImg.style.top = - yRate * y + "px";
+    
+  }
+  
+  function getPage(e) {
+    return {
+      x: e.pageX || e.clientX + document.documentElement.scrollLeft,
+      y: e.pageY || e.clientY + document.documentElement.scrollTop
+    }
+  }
+</script>
+
+</body>
+</html>

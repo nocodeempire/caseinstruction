@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // window.requestAnimationFrame() / requestAnimationFrame()
+    // HTML5中专门为 js 实现动画效果提供的一个方法！！！
+
+    // requestAnimationFrame()
+    // 1 这个方法不需要我们指定时间间隔就能实现动画效果
+    // 2 浏览器每次刷新，都会调用 requestAnimationFrame 指定的回调函数
+    // 3 如果有多个 requestAnimationFrame ，那么在这一次渲染过程中，会将所有
+    //   的DOM操作一次性处理，这样就提高了DOM渲染的性能
+    
+    // 用法：
+    function fn() {
+      console.log(123);
+
+      // requestAnimationFrame() 的调用放到函数的最后
+      requestAnimationFrame( fn );
+    }
+    fn();
+
+    // setInterval / setTimeout存在的问题：
+    // 1 指定的之间间隔不准确
+    // 2 如果页面中有多个定时器，每个定时器都会操作DOM，那么会造成性能问题
+    //      重绘和重排（DOM渲染）
+    // 3 造成动画丢帧
+    //    浏览器刷新一次，而setInterval 执行了两次，那么前面一帧就丢掉了
+    //    这样就会让动画不完整
+
+    // 屏幕的刷新频率： 60HZ（赫兹） 1秒钟刷新60次
+    // 人眼能够识别的最小频率是：60HZ，如果比 60赫兹小了，那么人眼就看到卡顿了
+    // 
+    // 60HZ 也是决定应用程序是否卡顿的一个指标！
+    // 1s / 60 ≈ 16.67ms
+
+  </script>
+</body>
+
+</html>

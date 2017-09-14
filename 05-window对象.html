@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  //1. window对象是js里面的老大，是顶级变量
+  //2. alert  console.log  document 都是window对象
+  //3. window太常用，window可以省略。
+  //4. 我们定义的全局变量  和 函数也是window的
+
+  //var num = 11;
+  //console.log(window.num);
+
+
+//  function fn() {
+//    console.log("呵呵");
+//    console.log(this);
+//  }
+//  window.fn();
+
+//  var obj = {
+//    sayHello:function () {
+//      console.log(this);
+//    }
+//  }
+//  obj.sayHello();
+
+
+  var name = "ls";
+  var age = 20;
+
+  function Teacher() {
+    this.name = "zs";
+    this.age = 18;
+    console.log(this);
+  }
+
+  var obj = Teacher();
+
+  console.log(name);//zs
+  console.log(age);//18
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  
+  //触发事件的时候，事件是有浏览器调用，生成一个事件对象，里面包含了一些信息，当成实参传递进来了。
+  
+  //IE678浏览器在触发的事件的时候，生成一个事件对象，但是呢，并没有当成实参传过来。会给window.event这个属性。
+  document.onclick = function (e) {
+    //console.log("呵呵");
+    //console.log(e);
+    //console.log(window.event);
+    e = e || window.event;
+    console.log(e);
+  };
+  
+  
+//  function fn(e) {
+//    console.log("11111");
+//    console.log(e);
+//  }
+//
+//  fn("呵呵");
+  
+</script>
+
+</body>
+</html>

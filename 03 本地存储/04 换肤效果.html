@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button data-color="red">点击我变成红色</button>
+	<button data-color="green">点击我变成绿色</button>
+	<button data-color="blue">点击我变成蓝色</button>
+
+	<script type="text/javascript">
+
+	// 需求：点击按钮变成对应的颜色
+	// 页面上来的时候先判断一下，如果存了的话，才获取
+	/*if(window.localStorage.getItem('color')){
+		document.body.style.background = window.localStorage.getItem('color');	
+	}*/
+	document.body.style.background = window.localStorage.getItem('color') || '#fff';
+
+	var btn = document.querySelectorAll('button');
+
+	for(var i = 0; i < btn.length; i++){
+		// 存索引
+		btn[i].setAttribute('data-index', i);
+		btn[i].onclick = function(){
+			// 获取当前点击的按钮的索引
+			var index = this.dataset.index;
+
+			if(index == 0){
+				document.body.style.background = 'red';
+			}else if(index == 1){
+				document.body.style.background = 'green';
+			}else{
+				document.body.style.background = 'blue';
+			}
+			// 将颜色值记录在本地
+			window.localStorage.setItem('color',this.dataset['color']);
+		}
+	}
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+    
+    img {
+      vertical-align: top;
+    }
+    
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      margin-top: 10px;
+      
+    }
+    
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<div class="top" id="topPart">
+  <img src="images/top.png" alt=""/>
+</div>
+<div class="nav" id="navBar">
+  <img src="images/nav.png" alt=""/>
+</div>
+<div class="main" id="mainPart">
+  <img src="images/main.png" alt=""/>
+</div>
+
+
+<script>
+  //1. 找对象
+  var topPart = document.getElementById("topPart");
+  var navBar = document.getElementById("navBar");
+  var mainPart = document.getElementById("mainPart");
+  
+  //2. 给页面注册滚动事件
+  window.onscroll = function () {
+    //3. 判断页面的scrollTop 与 topPart的高度，
+    // 如果超过了， 让navBar 固定定位  否则就不固定
+    var scrollTop = getScrollTop();
+    if(scrollTop >= topPart.offsetHeight) {
+      //让nav固定
+      navBar.className = "fixed";
+      //固定定位脱离标准流，不占位位置，mainPart就顶上来了， 给mainPart设置一个marginTop顶住这段距离
+      mainPart.style.marginTop = navBar.offsetHeight + 10 + "px";
+    }else {
+      navBar.className = "";
+      //没了固定定位，navBar又占位置了，所以需要把marginTop清除
+      mainPart.style.marginTop = 10 + "px";
+    }
+  }
+
+  function getScrollTop() {
+    return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+  }
+  
+</script>
+
+</body>
+</html>

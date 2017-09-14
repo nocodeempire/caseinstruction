@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+
+<div id="box" title="嘻嘻" class="cls" aa="bb" className="dd"></div>
+
+
+<script>
+
+  var box = document.getElementById("box");
+
+  //标签的固有的属性和DOM对象的属性是一一对应的。
+  //  console.log(box.title);
+  //  console.log(box.id);
+  //  console.log(box.className);
+
+
+  //对于标签自己定义的属性，在对象里面就没有了
+  //console.log(box.aa);
+  //box.bb = "cc";
+  //console.log(box.bb);
+  //自定义属性, 参数：属性名称  返回值：属性的值
+  //获取标签的属性，不管是固有属性还是自定义属性，只要标签有这个属性，就能获取到
+
+  //获取id    DOM可以操作HTML和XML
+  //console.log(box.id);
+  //var result = box.getAttribute("id");//标准
+  //console.log(result);
+
+  //设置标签的属性
+  //box.setAttribute("gg", "hehe");
+
+
+  //移除标签的属性  参数：需要移除的属性名
+  box.removeAttribute("aa");
+
+</script>
+</body>
+</html>

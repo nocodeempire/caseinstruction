@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 绘制运动的矩形:
+    var x = 100,      // 起始点坐标
+      target = 490;   // 目标值
+
+    // 使用 strokeRect() 方法不产生额外路径：
+    function fn() {
+      // 擦出画布中的内容
+      context.clearRect(0, 0, cv.width, cv.height);
+      
+      x += 1;
+      if(x >= target) {
+        clearInterval(timerId);
+      }
+      context.strokeRect(x, 100, 100, 100);
+    }
+
+    // 使用 rect() 方法产生路径：
+    /*function fn() {
+      // 擦出画布中的内容
+      context.clearRect(0, 0, cv.width, cv.height);
+      context.beginPath();
+      
+      x += 1;
+      if(x >= target) {
+        clearInterval(timerId);
+      }
+      context.rect(x, 100, 100, 100);
+      context.stroke();
+    }*/
+
+    var timerId = setInterval(fn, 20);
+  </script>
+</body>
+
+</html>

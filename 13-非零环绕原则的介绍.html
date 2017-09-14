@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    
+    // 非零环绕原则:
+    // 作用: 用来确定某个区域将来是否被填充
+    // 规则:
+    // 1 从要判断的区域中随机拉一条传过整个图形, 此时, 这条射线会与图形的边相交
+    // 2 以射线的起点为圆心点与相交的边, 绘制一个相切的圆
+    // 3 这个圆绘制的方向 与 边绘制的方向相同
+    // 4 如果是顺时针, 就记为: +1
+    // 5 如果是逆时针, 就记为: -1
+    // 6 最后, 将所有相交边的值相加, 如果结果为: 0, 那么这块区域不填充
+    //   否则, 填充
+
+    // 实例:
+    // 绘制大的正方形(顺时针绘制)
+    context.moveTo(100, 100);
+    context.lineTo(300, 100);
+    context.lineTo(300, 300);
+    context.lineTo(100, 300);
+    context.lineTo(100, 100);
+
+    // 绘制小正方形( 逆时针方向 )
+    context.moveTo(150, 150);
+    context.lineTo(150, 250);
+    context.lineTo(250, 250);
+    context.lineTo(250, 150);
+    context.lineTo(150, 150);
+
+    // context.stroke();
+    context.fill();
+    
+  </script>
+</body>
+</html>

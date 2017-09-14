@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<input type="button" value="按钮400" id="btn1">
+<input type="button" value="按钮800" id="btn2">
+
+<div id="box"></div>
+
+<script>
+  
+  //1. 点一次跑一次
+  //2. 定时器跑   1. 需要一个终点  2.越点越快
+  //3. 封装成一个动画函数  1. box变成了element  2. 400 变成了target 3. timer绑定到element
+  //4. 优化动画函数 ： 1. 回不来  2.step是9的时候，跑不到终点
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var box = document.getElementById("box");
+  btn1.onclick = function () {
+    animate(box, 400, 15);
+  }
+  
+  btn2.onclick = function () {
+    animate(box, 800, 15);
+  }
+  
+  //把里面所有的全局变量全部搞掉
+  function animate(element, target, num) {
+    clearInterval(element.timer);
+    element.timer = setInterval(function () {
+      var leader = element.offsetLeft;
+      var step = target > leader ? num : -num;
+      console.log(step);
+      if (Math.abs(target - leader) >= Math.abs(step)) {
+        leader += step;
+        element.style.left = leader + "px";
+      } else {
+        clearInterval(element.timer);
+        //抱过去
+        element.style.left = target + "px";
+      }
+    }, 15);
+  }
+</script>
+
+</body>
+</html>

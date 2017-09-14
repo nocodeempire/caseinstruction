@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  
+  
+  //console.log(/^a$/.test("a"));//true
+  //console.log(/^a$/.test(""));//false
+  //console.log(/^a$/.test("aa"));//false
+  //console.log(/^a$/.test("aab"));//false
+  
+  //*表示  可以出现0次或者多次  要么不出现 要么只能出现a
+  //console.log(/^a*$/.test("a"));//true
+  //console.log(/^a*$/.test(""));//true
+  //console.log(/^a*$/.test("b"));//false
+  //console.log(/^a*$/.test("aa"));//true
+  //console.log(/^a*$/.test("aab"));//false
+  
+  //+表示 可以出现1次或者1次以上
+  // console.log(/^a+$/.test("a"));//true
+  // console.log(/^a+$/.test(""));//false
+  // console.log(/^a+$/.test("b"));//false
+  // console.log(/^a+$/.test("aa"));//true
+  // console.log(/^a+$/.test("aab"));//false
+  
+  //? 表示可以出现0次或者1次
+  //  console.log(/^a?$/.test("a"));//true
+  //  console.log(/^a?$/.test(""));//true
+  //  console.log(/^a?$/.test("b"));//false
+  //  console.log(/^a?$/.test("aa"));//false
+  //  console.log(/^a?$/.test("aab"));//false
+  
+  
+  //aa  大括号可以控制出现的次数
+  // {n}: 只能出现n次
+  // {n,} :出现n次或者n次以上
+  // {n,m} : 出现的次数 n到m次
+  // +   {1,}
+  // *   {0,}
+  // ?   {0,1}
+  
+  //aa aaa aaaa
+  //  console.log(/^a{2,4}$/.test("a"));
+  //  console.log(/^a{2,4}$/.test("aa"));
+  //  console.log(/^a{2,4}$/.test("aaa"));
+  
+  
+  //  \d: [0-9]
+  //  \D [^0-9]
+  //  \w [a-zA-Z0-9_]
+  //  \W [^a-zA-Z0-9_]
+  //  \s  不可见字符
+  //  \S 可见字符
+  //  .  任意字符(.有特殊的意义)
+  
+  //  ():优先级  []:一个字符的位置  {} :出现的次数
+  // | 表示的是或
+  // * 0次以上   +：1次以上  ?：0次或者1次
+  
+  // ^ 开始   $结束
+  
+  
+  
+  //
+  //console.log(/(chuan){2}/.test("chuanchuan"));//false
+  //console.log(/chuan{2}/.test("chuann"));//true
+
+  
+  //foot  boot
+  console.log(/^[fb]oot$/.test("foot"));
+  console.log(/^[fb]oot$/.test("boot"));
+</script>
+
+</body>
+</html>

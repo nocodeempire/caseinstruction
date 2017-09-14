@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+        	
+        	 * {
+        	 	 margin: 0;
+        	 	 padding: 0;
+        	 }
+
+        	 .box {
+        	 	 width: 300px;
+        	 	 height: 300px;
+        	 	 border: 1px solid #ccc;
+        	 	 margin: 100px auto;
+        	 	 border-radius: 50%;
+        	 	 position: relative;
+        	 }
+
+        	 .line {
+        	 	 position: absolute;
+        	 	 left: 50%;
+        	 	 margin-left: -1px;
+        	 	 height: 100%;
+        	 	 width: 2px;
+        	 	 background-color: #ccc;
+        	 }
+        	 .line:nth-child(1){
+
+        	 }
+
+        	 .line:nth-child(2) {
+        	 	 transform: rotateZ(30deg);
+        	 }
+
+        	 .line:nth-child(3) {
+        	 	 transform: rotateZ(60deg);
+        	 }
+
+        	 .line:nth-child(4) {
+        	 	 transform: rotateZ(90deg);
+        	 }
+
+        	 .line:nth-child(5) {
+        	 	 transform: rotateZ(120deg);
+        	 }
+
+        	 .line:nth-child(6) {
+        	 	 transform: rotateZ(-30deg);
+        	 }
+
+        	 .cover {
+        	 	 position: absolute;
+        	 	 left: 50%;
+        	 	 top: 50%;
+        	 	 margin-left: -140px;
+        	 	 margin-top: -140px;
+        	 	 width: 280px;
+        	 	 height: 280px;
+        	 	 background-color: #fff;
+        	 	 border-radius: 50%;
+        	 }
+
+        	 .h{
+        	 	 width: 6px;
+        	 	 height: 100px;
+        	 	 background-color: pink;
+        	 	 position: absolute;
+        	 	 left: 50%;
+        	 	 top: 40px;
+        	 	 margin-left: -3px;
+        	 	 animation: rotate 43200s linear infinite;
+        	 }
+
+        	 .m {
+        	 	 width: 4px;
+        	 	 height: 120px;
+        	 	 background-color: blue;
+        	 	 position: absolute;
+        	 	 left: 50%;
+        	 	 top: 20px;
+        	 	 margin-left: -2px;
+        	 	 transform-origin: bottom;
+        	 	 animation: rotate 3600s linear infinite;
+        	 }
+
+        	 .s {
+        	 	 width: 2px;
+        	 	 height: 130px;
+        	 	 background-color: orange;
+        	 	 position: absolute;
+        	 	 left: 50%;
+        	 	 top: 10px;
+        	 	 margin-left: -1px;
+				 transform-origin: bottom;
+        	 	 animation: rotate 60s steps(60) infinite;
+        	 }
+
+        	 .dotted {
+        	 	 width: 10px;
+        	 	 height: 10px;
+        	 	 background-color: #000;
+        	 	 border-radius: 50%;
+        	 	 position: absolute;
+        	 	 left: 50%;
+        	 	 top: 50%;
+        	 	 margin-left: -5px;
+        	 	 margin-top: -5px;
+        	 }
+
+
+        	 @keyframes rotate {
+        	 	 from {
+        	 	 	transform: rotateZ(0deg);
+        	 	 }
+
+        	 	 to {
+        	 	 	transform: rotateZ(360deg);
+        	 	 }
+        	 }
+
+
+        </style>
+    </head>
+    <body>
+    	  <div class="box">
+    	  	 <div class="line"></div>
+    	  	 <div class="line"></div>
+    	  	 <div class="line"></div>
+    	  	 <div class="line"></div>
+    	  	 <div class="line"></div>
+    	  	 <div class="line"></div>
+
+    	  	 <div class="cover">
+    	  	 		
+    	  	 	 <div class="h"></div>
+    	  	 	 <div class="m"></div>
+    	  	 	 <div class="s"></div>
+
+    	  	 	 <div class="dotted"></div>
+
+    	  	 </div>
+    	  </div>
+    </body>
+</html>

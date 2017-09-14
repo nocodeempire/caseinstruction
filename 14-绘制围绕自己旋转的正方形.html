@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+    
+    var context = cv.getContext('2d');
+    var toRadian = function( angle ) {
+      return angle / 180 * Math.PI;
+    };
+    
+    // 1 因为旋转是以 原点为中心点的，所以，需要让正方形的中心落在原点上
+
+    // 1 先平移画布
+    context.translate(cv.width / 2, cv.height / 2);
+    // 2 将正方形的中心点落在原点上
+    context.strokeRect(-50, -50, 100, 100);
+    // 3 定时器绘制
+
+    var x = cv.width / 2,
+      y = cv.height / 2,
+      // startAngle = 0,
+      step = 5;
+
+    setInterval(function() {
+      // 清除画布内容
+      context.clearRect(-x, -y, cv.width, cv.height);
+      
+      // 先旋转再绘制
+      // 旋转是基于上一次旋转的，所以，每次只需要在上一次的基础上再旋转5度即可！！！
+      context.rotate( toRadian(step) );
+
+      context.strokeRect(-50, -50, 100, 100);
+
+    }, 50);
+    
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .one {
+      background-color: pink;
+
+    }
+    
+    .two {
+      background-color: hotpink;
+      margin: 100px;
+    }
+    
+    .three {
+      background-color: deepskyblue;
+      margin: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="one"></div>
+<div class="two"></div>
+<div class="three"></div>
+
+<script>
+
+  var divs = document.getElementsByTagName("div");
+
+  var zIndex = 0;
+
+  for(var i = 0; i < divs.length; i++) {
+
+    divs[i].onclick = function () {
+
+      this.style.zIndex = ++zIndex;
+
+    };
+
+  }
+
+</script>
+
+</body>
+</html>

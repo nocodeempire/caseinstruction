@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    #box {
+      width: 100px;
+      height: 90px;
+      background-color: hotpink;
+      border-top: 10px solid green;
+      border-radius: 50px 50px 0 0 / 10px 10px 0 0;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="奔跑400吧,张学路" id="btn1">
+<input type="button" value="奔跑800吧,张学路" id="btn2">
+
+<p></p>
+<div id="box"></div>
+
+<script>
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var box = document.getElementById("box");
+  
+  
+  //保证页面中永远只有一个定时器能跑 页面所有的元素都共用了一个timer
+  
+  btn1.onclick = function () {
+    animate(box, 400);
+  }
+
+  btn2.onclick = function () {
+    animate(box, 800);
+  }
+  
+  
+  //animate:动画
+  //函数需要独立，就不能使用全局变量
+
+
+
+
+  //a).把box替换成element
+  //b).把400替换成target
+  //c).把timer绑定到element上
+  
+  //能够保证一个元素，永远只有一个定时器在跑。
+  function animate(element, target) {
+    //一进来，就清除定时器
+    clearInterval(element.timer);
+    element.timer = setInterval(function () {
+      
+      var step = 9;
+      var leader = element.offsetLeft;
+    
+      if (leader < target) {
+        leader = leader + step;
+        element.style.left = leader + "px";
+      } else {
+        clearInterval(element.timer);
+        element.style.left = target + "px";
+      }
+    
+      console.log("呵呵");
+    }, 15);
+  }
+</script>
+</body>
+</html>

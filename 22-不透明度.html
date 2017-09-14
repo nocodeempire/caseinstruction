@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+
+
+
+
+      /*!*IE678不支持*!*/
+      /*opacity: .5;*/
+      /*!*IE678支持这个*!*/
+      /*filter: alpha(opacity = 50);*/
+    }
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+
+<script>
+
+  var box = document.getElementById("box");
+  //不透明度需要设置2个
+  box.style.opacity = "0.5";
+  box.style.filter = "alpha(opacity = 50)";
+
+</script>
+
+</body>
+</html>

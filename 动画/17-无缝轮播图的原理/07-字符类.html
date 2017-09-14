@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  
+  //[]表示一个字符的位置,里面可以写出现的值。
+  //console.log(/[fb]oot/.test("aaaafoot"));
+  //console.log(/[fb]oot/.test("aaaaboot"));
+  //console.log(/[abcd]/.test("aaaaa"));
+  //console.log(/[abcd]/.test("ffff"));
+  //A:65  a:97
+  //console.log(/[A-Za-z]/.test("ffff"));
+  //console.log(/[0-5]/.test("ffff"));
+  
+  //console.log(/[abc]/.test("aooooooo"));//true
+  //console.log(/[abc]/.test("ooooooo"));//false
+  
+  console.log(/[^abc]/.test("ooooooo"));//true
+  console.log(/[^abc]/.test("aaaaaabc"));//
+
+</script>
+
+</body>
+</html>

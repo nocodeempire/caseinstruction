@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .container {
+      width: 400px;
+      height: 200px;
+      border: 1px dotted red;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <canvas id="c"></canvas>
+  </div>
+  <script>
+    var cv = document.getElementById('c');
+    var context = cv.getContext('2d');
+
+    cv.width = 400;
+    cv.height = 200;
+
+    // 奖品设置
+    var prizesArr = [
+      { name: 'iPhone7 亮黑版', color: 'rgba(0, 0, 0, 1)' },
+      { name: 'iPhone7 黑色版', color: 'rgba(0, 0, 0, .9)' },
+      { name: 'iPhone7 安卓版', color: 'rgba(0, 255, 0, 1)' },
+      { name: 'iPhone7 塞班版', color: 'rgba(255, 0, 0, 1)' },
+      { name: '骑皮皮虾一次', color: 'rgba(255, 100, 66, 1)' },
+      { name: '班长抱一次', color: 'rgba(0, 255, 0, 1)' },
+    ];
+
+    // 方式一：
+    // 1 准备两个重叠的canvas标签（尺寸一样）
+    //   底下的canvas绘制奖品信息
+    //   上面的canvas绘制遮罩层
+    //   给上面的canvas绑定事件，进行“擦除”，这样就能看到底下的canvas
+
+    // 2 绘制奖品信息以后，将canvas标签转化为图片
+    //   将图片设置为canvas的背景图
+    //   绘制遮罩层
+    //   绑定事件，进行“擦除”，这样就能看到当前canvas的背景了
+
+    // 刮刮乐案例的实现思路：
+    // 1 获取奖品信息
+    // 2 绘制奖品信息
+    // 3 调用 toDataURL() 方法将canvas转化为图片
+    // 4 设置为 canvas DOM对象的背景图片
+    // 5 绘制遮罩层
+    // 6 绑定事件，并且设置 globalCompositeOperation="destination-out"
+    // 将来 重叠部分会变为透明，这样就能看到背景了！！！
+
+    // 1 随机获取奖品，绘制奖品信息
+    var prize = prizesArr[Math.floor(Math.random() * prizesArr.length)];
+    context.font = '30px 微软雅黑';
+    context.textAlign = 'center';
+    context.textBaseline = 'middle';
+    context.fillText(prize.name, cv.width / 2, cv.height / 2);
+
+    // 1.1 将canvas转化为图片
+    var imgUrl = cv.toDataURL('image/png', 1);
+    cv.style.backgroundImage = 'url(' + imgUrl + ')';
+
+    // 2 绘制遮罩层
+    context.fillStyle = 'silver';
+    context.fillRect(0, 0, cv.width, cv.height);
+
+    // 3 绑定鼠标事件
+    var flag = false;
+    cv.addEventListener('mousedown', function () {
+      flag = true;
+      // 新绘制的内容变为透明，原来的内容还保留着
+      context.globalCompositeOperation = 'destination-out';
+    });
+
+    cv.addEventListener('mousemove', function (e) {
+      if (!flag) {
+        return;
+      }
+      context.beginPath();
+
+      // globalCompositeOperation
+      // 作用：用来指定两个图形重叠部分展示的效果
+
+      // 鼠标移动执行的操作
+      // console.log(e.offsetX, e.offsetY);
+      // context.fillStyle = 'transparent';
+      context.arc(e.offsetX, e.offsetY, 20, 0, Math.PI * 2);
+      context.fill();
+
+    });
+
+    cv.addEventListener('mouseup', function () {
+      flag = false;
+      context.globalCompositeOperation = 'source-over';
+    });
+  </script>
+</body>
+
+</html>

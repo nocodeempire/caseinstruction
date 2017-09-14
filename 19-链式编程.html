@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+  </style>
+</head>
+<body>
+
+
+<ul>
+  <li>1</li>
+  <li id="now">2</li>
+  <li>3</li>
+  <li>4</li>
+</ul>
+
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function(){
+  
+    
+    //end:返回上一次的jquery对象的状态。
+    console.log($("#now").prevAll().end());
+  
+  });
+</script>
+
+</body>
+</html>

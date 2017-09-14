@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="txt" value="饮料">
+
+
+<script>
+
+  // onfocus : 获得input框的焦点的时候触发
+  // onblur  : 失去input框的焦点的时候触发
+  var txt = document.getElementById("txt");
+
+
+  //判断文本框的值，如果是默认值，就清空，   如果不是，拉倒
+  txt.onfocus = function () {
+    if(txt.value == "饮料"){
+      txt.value = "";
+    }
+  }
+
+  //如果文本框的值是空，恢复默认值，  否则，拉倒
+  txt.onblur = function () {
+    if(txt.value == ""){
+      txt.value = "饮料";
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

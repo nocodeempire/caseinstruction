@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.father {
+			width: 300px;
+			height: 300px;
+			background-color: red;
+		}
+		.son {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.sun {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son">
+			<div class="sun"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	var father = document.querySelector('.father');
+	var son = document.querySelector('.son');
+	var sun = document.querySelector('.sun');
+
+	// 冒泡现象产生需要满足两个条件
+	// （1）元素之间必须是嵌套关系
+	// （2）父元素有你在子元素身上触发的事件
+
+	father.onclick = function(){
+		console.log(1);
+	}
+	son.onclick = function(){
+		console.log(2);
+	}
+	sun.onclick = function(){
+		console.log(3);
+	}
+
+
+
+	</script>
+</body>
+</html>

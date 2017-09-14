@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="table.css">
+</head>
+<body>
+
+<div id="box"></div>
+
+<script src="table.js"></script>
+<script>
+
+  //通过ajax去后端取数据
+  var json = {
+    "header": ["姓名", "性别", "年龄", "成绩", "傻不傻"],
+    "datas": [
+      {"name": "韩思琪", "gender": "女", "age": 18, "salary": 30000, "isStupid": "是"},
+      {"name": "亮亮", "gender": "男", "age": 19, "salary": 50000, "isStupid": "否"},
+      {"name": "聪聪", "gender": "男", "age": 17, "salary": 8000, "isStupid": "是"},
+      {"name": "聪聪", "gender": "男", "age": 17, "salary": 8000, "isStupid": "否"},
+      {"name": "聪聪", "gender": "男", "age": 17, "salary": 8000, "isStupid": "是"},
+      {"name": "聪聪", "gender": "男", "age": 17, "salary": 8000, "isStupid": "否"}
+    ]
+  };
+
+  var box = document.getElementById("box");
+  createTable(box, json);
+</script>
+
+</body>
+</html>

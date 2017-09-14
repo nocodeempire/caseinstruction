@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    fieldset, img, input, button {
+      border: none;
+      padding: 0;
+      margin: 0;
+      outline-style: none;
+    }
+    
+    ul, ol {
+      list-style: none;
+      margin: 0px;
+      padding: 0px;
+    }
+    
+    #box {
+      width: 405px;
+      margin: 200px auto;
+      position: relative;
+    }
+    
+    #txtSearch {
+      float: left;
+      width: 300px;
+      height: 32px;
+      padding-left: 4px;
+      border: 1px solid #b6b6b6;
+      border-right: 0;
+    }
+    
+    #btnSearch {
+      float: left;
+      width: 100px;
+      height: 34px;
+      font: 400 14px/34px "microsoft yahei";
+      color: white;
+      background: #3385ff;
+      cursor: pointer;
+    }
+    
+    #btnSearch:hover {
+      background: #317ef3;
+    }
+    
+    #pop {
+      width: 303px;
+      border: 1px solid #ccc;
+      padding: 0px;
+      position: absolute;
+      top: 34px;
+    }
+    
+    #pop ul li {
+      padding-left: 5px;
+    }
+    
+    #pop ul li:hover {
+      background-color: #CCC;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <input type="text" id="txtSearch">
+  <input type="button" value="百度一下" id="btnSearch">
+  <!--<div id="pop">-->
+    <!--<ul>-->
+      <!--<li>凤姐</li>-->
+      <!--<li>芙蓉</li>-->
+      <!--<li>西施</li>-->
+      <!--<li>貂蝉</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+</div>
+
+<script>
+
+  var txtSearch = document.getElementById("txtSearch");
+
+
+  //判断哪些字符串包含了  a
+  var datas = ["a", "abc", "abbbb", "abxxxx", "xyz", "abcdef", "abzzzz","axxx","aaabbb"];
+  //1. 拿到用户输入的值    给后端， 获取到后端返回的数组   a
+
+
+  txtSearch.onkeyup = function () {
+    var newArr = [];
+    var content = txtSearch.value
+
+
+    for(var i = 0; i < datas.length; i++) {
+      if(datas[i].indexOf(content) != -1){
+        newArr.push(datas[i]);
+      }
+    }
+
+    console.log(newArr);
+  };
+
+
+
+
+  //2. 根据后端返回的数组，生成div ul li
+
+</script>
+
+
+
+</body>
+</html>

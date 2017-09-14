@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 需求：
+    // 1 绘制一条 10像素宽，红色的线
+    // 2 绘制一条 1像素宽，黑色的线
+
+    // 实际上在绘图的过程中，经常会改变状态，状态修改次数多了以后
+    // 就不容易记住当前是什么样的状态
+
+    // canvas中提供了两个方法用来处理状态:
+    // 1 context.save()       保存状态
+    // 2 context.restore()    恢复到上一次保存的状态
+
+    // 最佳实践: 
+    // 一般情况下, 都是将默认的状态保存起来, 然后就可以修改状态,
+    // 最后, 会将状态恢复
+    // 一般情况下, save() 和 restore() 是成对出现的!
+
+    /*
+      context.save(); // 保存状态
+      
+      // 修改状态
+
+      context.restore(); // 恢复到默认状态
+    */
+
+    // 保存默认状态(线宽为:1像素, 颜色为:黑色)
+    context.save();
+
+    // 修改状态:
+    context.lineWidth = 10;
+    context.strokeStyle = 'red';
+
+    context.moveTo(100, 100);
+    context.lineTo(300, 100);
+    context.stroke();
+
+    context.restore();
+    // 此时, 状态恢复到上一次保存的状态( 线宽为:1像素, 颜色为:黑色 )
+    
+    context.beginPath();
+    context.moveTo(100, 120);
+    context.lineTo(300, 120);
+    context.stroke();
+
+
+    /*context.lineWidth = 10;
+    context.strokeStyle = 'red';
+    context.moveTo(100, 100);
+    context.lineTo(300, 100);
+    context.stroke();
+
+    context.beginPath();
+    context.lineWidth = 1;
+    context.strokeStyle = 'black';
+    context.moveTo(100, 120);
+    context.lineTo(300, 120);
+    context.stroke();*/
+  </script>
+</body>
+
+</html>

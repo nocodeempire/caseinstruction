@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="button" value="开启" id="btn1">
+<input type="button" value="关闭" id="btn2">
+
+<script>
+
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var timer;//存定时器id
+
+  btn1.onclick = function () {
+
+    //第一个参数：每次都执行的函数
+    //第二个参数：间隔时间
+    timer = setInterval(function () {
+      console.log("我没病，我真的没病");
+    }, 1000);
+
+
+
+    //很多同学，总以为定时器非要执行完了，代码才会继续执行。
+    //定时器仅仅开启了一个任务，让window每隔1秒钟去调用一次函数
+    console.log("我这段代码什么时候执行..............");
+  }
+
+
+  btn2.onclick = function () {
+    console.log("吃药了....");
+    clearInterval(timer);
+  }
+</script>
+</body>
+</html>

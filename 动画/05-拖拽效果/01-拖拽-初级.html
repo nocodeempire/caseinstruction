@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+    
+  </style>
+</head>
+<body>
+
+<div id="box"></div>
+
+<script>
+  
+  var box = document.getElementById("box");
+  
+  //onmousedown:当鼠标按下时触发
+  //onmouseup :当鼠标弹起时触发
+  //onmousemove :
+  
+  //1. 在盒子上按下鼠标
+  box.onmousedown = function (event) {
+    //记录按下的鼠标的位置
+    event = event || window.event;
+    var spaceX = getPage(event).x - box.offsetLeft;
+    var spaceY = getPage(event).y - box.offsetTop;
+    console.log(spaceX + "   " + spaceY);
+    //2. 移动鼠标，盒子需要跟这鼠标移动
+    document.onmousemove = function (e) {
+      e = e || window.event;
+      //应该减去 鼠标按下时，在盒子中的位置。
+      box.style.left = getPage(e).x - spaceX + "px";
+      box.style.top = getPage(e).y -spaceY + "px";
+    }
+  }
+
+  //3. 松开鼠标，盒子就不跟着
+  document.onmouseup = function () {
+    console.log("鼠标松开了");
+    //只要松开鼠标了，就不跟这了
+    document.onmousemove = null;
+  }
+
+
+  function getPage(e) {
+    return {
+      x : e.pageX || e.clientX + document.documentElement.scrollLeft,
+      y : e.pageY || e.clientY + document.documentElement.scrollTop
+    }
+  }
+</script>
+
+</body>
+</html>

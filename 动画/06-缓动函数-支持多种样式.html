@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      
+    }
+  </style>
+</head>
+<body>
+
+<input type="button" value="按钮400" id="btn1">
+<input type="button" value="按钮800" id="btn2">
+<div id="box"></div>
+
+<script>
+  
+  var btn1 = document.getElementById("btn1");
+  var box = document.getElementById("box");
+  btn1.onclick = function () {
+    //animate(box, "width",400);
+    animate(box, "left", 400);
+  }
+  
+  //element： 要做动画的元素
+  //attr   :  要做动画的样式
+  //target :  目标值
+  function animate(element, attr, target) {
+    clearInterval(element.timer);
+    element.timer = setInterval(function () {
+      //1. 获取样式
+      var leader = getStyle(element, attr);
+      //目的：当出现转换失败的情况，给一个默认值0
+      leader = parseInt(leader) || 0; //auto  NaN
+      
+      var step = (target - leader) / 10;
+      step = step > 0 ? Math.ceil(step) : Math.floor(step);
+      leader += step;
+      
+      //2. 设置指定样式
+      element.style[attr] = leader + "px";
+      
+      if (leader == target) {
+        clearInterval(element.timer);
+      }
+    }, 15);
+  }
+  
+  function getStyle(element, attr) {
+    //如果window有getComputedStyle这个方法
+    if (window.getComputedStyle) {
+      return window.getComputedStyle(element, null)[attr];
+    } else {
+      return element.currentStyle[attr];
+    }
+  }
+</script>
+
+</body>
+</html>

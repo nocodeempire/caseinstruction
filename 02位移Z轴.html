@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <style type="text/css">
+        	 .box {
+        	 	 width: 500px;
+        	 	 height: 500px;
+        	 	 background-color: pink;
+        	 	 margin: 100px auto;
+        	 	 border: 1px solid #ccc;
+			     /* 透视 */
+        	 	 perspective: 1000px;
+        	 }
+
+        	 .one {
+        	 	 width: 300px;
+        	 	 height: 300px;
+        	 	 margin: 100px auto;
+        	 	 background-color: green;
+        	 	 transition: all 1s linear;
+        	 }
+
+        	 .box:hover .one {
+        	 	 transform: translateZ(100px);
+        	 }
+        </style>
+    </head>
+    <body>
+
+    	  <div class="box">
+    	  	  <div class="one"></div>
+    	  </div>
+    </body>
+</html>

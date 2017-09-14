@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script type="text/javascript">
+
+	//localStorage的数据是可以多窗口共享
+	//sessionStorage的数据是不支持多窗口共享，但是通过链接跳转过来的页面是可以获取上一张页面的session数据
+	
+	alert(window.localStorage.getItem('age'));
+	alert(window.sessionStorage.getItem('age'));
+	</script>
+</body>
+</html>

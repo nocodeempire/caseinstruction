@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // 绘制矩形的方法:
+
+
+    // 第一个参数: 表示矩形左上角的x坐标
+    // 第二个参数: 表示矩形左上角的y坐标
+    // 第三个参数: 表示矩形的宽度
+    // 第四个参数: 表示矩形的高度
+    // 作用: 描绘矩形的路径
+    /*// 1 ctx.rect(x, y, w, h)
+    context.rect(0, 0, 200, 100);
+    // context.stroke();
+    context.fill();*/
+    
+    // 2 快速绘制矩形:
+    // 参数与 rect 方法的参数相同!!!
+    // 不同: 这两个方法不产生路径
+    // strokeRect(x, y, w, h)
+    // fillRect(x, y, w, h)
+    // context.strokeRect(100, 100, 200, 200);
+
+    // context.fillStyle='red';
+    // context.fillRect(100, 100, 200, 200);
+    // context.fill();
+    
+    // 3 清除矩形
+    // 作用: 将canvas画布中展示的内容擦出掉, 不会影响路径和状态!!!
+    // clearRect(x, y, w, h);
+    context.fillRect(20, 20, 200, 300);
+    context.clearRect(100, 100, 100, 100);
+
+    // canvas 中绘制动态效果的方式:
+    // 1 先进行绘制
+    // 2 擦除画布中展示的所有内容
+    // 3 重新计算每一个图形新坐标位置
+    // 4 将每一个图形根据新坐标绘制到画布中
+    // 5 擦除整个画布
+    // 6 重复 3/4/5 三个步骤
+    
+
+    // 4 清除整个画布： 
+    // context.clearRect(0, 0, cv.width, cv.height);
+  </script>
+</body>
+
+</html>

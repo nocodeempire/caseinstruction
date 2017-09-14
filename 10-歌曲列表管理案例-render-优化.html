@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    .container {
+      margin: 100px auto;
+      width: 850px;
+      border: 1px solid #dad8d8;
+      /*height: 100%;*/
+    }
+
+    .songslist-op {
+      margin: 10px 0;
+    }
+
+    .songslist-main,
+    .songslist-header {
+      position: relative;
+      width: 100%;
+      text-align: center;
+    }
+
+    .songslist-header {
+      height: 30px;
+      border-bottom: 1px solid #dad8d8;
+      line-height: 30px;
+      background-color: #def;
+    }
+
+    .songslist-name {
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      border-right: 1px solid #dad8d8;
+    }
+
+    .songslist-singer {
+      position: absolute;
+      left: 40%;
+      width: 50%;
+      height: 100%;
+      border-right: 1px solid #dad8d8;
+    }
+
+    .songslist-option {
+      position: absolute;
+      left: 90%;
+      width: 10%;
+      height: 100%;
+    }
+
+    .songslist-main {
+      background-color: #fff;
+      height: 100%;
+    }
+
+    .songslist-main .songslist-name {
+      height: 50px;
+      line-height: 50px;
+      border: 0;
+    }
+
+    .songslist-main .songslist-singer {
+      height: 50px;
+      line-height: 50px;
+      border: 0;
+    }
+
+    .songslist-single {
+      height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="songslist-op">
+      <label for="txtAddSName">歌曲名:</label>
+      <input type="text" id="txtAddSName" />
+      <label for="txtAddSinger">歌手:</label>
+      <input type="text" id="txtAddSinger" />
+      <button id="btnAdd">添加</button>
+      <button id="btnRemove">删除</button>
+    </div>
+    <div class="songslist-header">
+      <div class="songslist-name">歌曲名称</div>
+      <div class="songslist-singer">歌手</div>
+      <div class="songslist-option">操作</div>
+    </div>
+    <div class="songslist-main" id="c">
+      <!--<div class="songslist-single">
+        <div class="songslist-name">歌曲名称</div>
+        <div class="songslist-singer">歌手</div>
+      </div>
+      <div class="songslist-single">
+        <div class="songslist-name">歌曲名称</div>
+        <div class="songslist-singer">歌手</div>
+      </div>-->
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // 数据才是核心！！！
+
+    // 1 实现歌曲列表管理的增删改查（面向对象的方式）
+
+    // 面向对象：构造函数 + 原型
+    // 构造函数：属性
+    // 原型对象：方法（以及公共的属性）
+
+    /*
+      if(songsList && !Array.isArray(songsList)) {
+        throw new Error('参数必须是一个数组');
+      }
+    */
+
+    function SongsManager(songsList) {
+      // list 是歌曲列表数据
+      this.list = songsList || [];
+    }
+
+    SongsManager.prototype = {
+      constructor: SongsManager,
+
+      /*
+        添加歌曲
+      */
+      add: function (sName, sSinger) {
+        this.list.push({ songName: sName, songSinger: sSinger });
+
+        // 渲染页面结构
+        this.render();
+      },
+
+      /*
+        删除歌曲
+      */
+      del: function (sName) {
+        // 原则：
+        // 1 只要对象的属性用到一次以上，就定义变量
+        // 2 将所有变量的声明提到当前作用域的最顶部，后面直接变量
+        // 3 在函数中，推荐使用 单var 的形式来声明变量
+        var list = this.list,
+          i = 0,
+          length = list.length;
+
+        // for (i = 0, length = list.length; i < length; i++) {
+        for (; i < length; i++) {
+          if (sName === list[i].songName) {
+            list.splice(i, 1);
+            break;
+          }
+        }
+
+        this.render();
+      },
+      /*
+        修改
+      */
+      update: function (sName, sSinger) {
+        var i = 0,
+          list = this.list,
+          length = list.length,
+          // 因为item将来会被赋值为一个对象，所以，此处就使用 null
+          item = null;
+
+        for (; i < length; i++) {
+          item = list[i];
+
+          if (sName === item.songName) {
+            item.songSinger = sSinger;
+            break;
+          }
+        }
+
+        this.render();
+      },
+      /*
+        查询歌曲
+      */
+      get: function (sName) {
+        var str = '对不起，没有此歌曲！',
+          list = this.list,
+          length = list.length,
+          i = 0,
+          item = null;
+
+        for (; i < length; i++) {
+          item = list[i];
+          if (sName === item.songName) {
+            str = item.songSinger;
+            break;
+          }
+        }
+
+        console.log(str);
+      },
+
+      /*
+        根据数据渲染页面结构
+      */
+      render: function () {
+        /*
+          <div class="songslist-single">
+            <div class="songslist-name">歌曲名称</div>
+            <div class="songslist-singer">歌手</div>
+          </div>
+        */
+
+        // 1 根据数据（数组）为数组中的每一个元素生成一段html结构
+        // 2 将html通过 innerHTML 设置到页面中去
+        var str = '',
+          list = this.list,
+          length = list.length,
+          i = 0,
+          item = null;
+
+        for (; i < length; i++) {
+          item = list[i];
+          str += '<div class="songslist-single">';
+          str += '  <div class="songslist-name">' + item.songName + '</div>';
+          str += '  <div class="songslist-singer">' + item.songSinger + '</div>';
+          str += '</div>';
+        }
+
+        document.getElementById('c').innerHTML = str;
+      }
+    };
+
+    // 歌曲管理的实例对象
+    var s = new SongsManager();
+
+    // DOM操作
+    var btnAdd = document.getElementById('btnAdd');
+    var btnRemove = document.getElementById('btnRemove');
+    // 歌曲名称
+    var txtAddSName = document.getElementById('txtAddSName');
+    var txtAddSinger = document.getElementById('txtAddSinger');
+
+    // 添加歌曲
+    btnAdd.addEventListener('click', function () {
+      if (txtAddSName.value.trim() === "" || txtAddSinger.value.trim() === '') {
+        return;
+      }
+
+      s.add(txtAddSName.value.trim(), txtAddSinger.value.trim());
+    });
+
+    // 删除歌曲
+    btnRemove.addEventListener('click', function () {
+      if (txtAddSName.value.trim() === "") {
+        return;
+      }
+
+      s.del(txtAddSName.value.trim());
+    });
+  </script>
+</body>
+
+</html>

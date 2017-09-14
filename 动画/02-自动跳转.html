@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+<a href="http://www.baidu.com" id="link">注册成功，10秒后跳转</a>
+
+
+<script>
+
+  // 每秒改一次a标签的内容，  当到达0秒时，跳到百度
+  var num = 10;
+  var link = document.getElementById("link");
+  var timer = setInterval(function () {
+    
+    num--;
+    link.innerHTML = "注册成功，"+num+"秒后跳转";
+    if(num == 0){
+      //清除定时器
+      clearInterval(timer);
+      location.href = "http://www.baidu.com";
+    }
+    
+    
+  }, 1000);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左侧固定 右侧自适应</title>
+	<style>
+		.box {
+			width: 100%;
+			height: 100px;
+			background-color: pink;
+		}
+		.left {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			float: left;
+		}
+		.right {
+			/* 一个不写宽度的标准流盒子，直接写margin或者padding都会自动内减 */
+			height: 100px;
+			background-color: red;
+			margin-left: 110px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

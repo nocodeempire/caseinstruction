@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  
+  //console.log(/foot/.test("footaaaaa"));
+  //console.log(/foot/.test("aaaafoot"));
+  //console.log(/foot/.test("aaaafot"));
+  
+  
+//  console.log(/foot|boot/.test("footaaaaa"));//true
+//  console.log(/foot|boot/.test("bootaaaaa"));//true
+//  console.log(/foot|boot/.test("fbootaaaaa"));//true
+//  console.log(/foot|boot/.test("fbotaaaaa"));//false
+
+//  console.log(/f|boot/.test("footaaaaa"));//true
+//  console.log(/f|boot/.test("bootaaaaa"));//true
+//  console.log(/f|boot/.test("fbootaaaaa"));//true
+//  console.log(/f|boot/.test("fbotaaaaa"));//true
+
+  
+  console.log(/(f|b)oot/.test("footaaaaa"));//true
+  console.log(/(f|b)oot/.test("bootaaaaa"));//true
+  console.log(/(f|b)oot/.test("fbootaaaaa"));//true
+  console.log(/(f|b)oot/.test("fbotaaaaa"));//false
+</script>
+</body>
+</html>

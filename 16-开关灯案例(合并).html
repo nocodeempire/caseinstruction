@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="button" value="关灯" id="btn">
+
+<script>
+
+  var btn = document.getElementById("btn");
+
+
+
+  //className  style:如果这个样式不停的在变
+  btn.onclick = function () {
+    if(btn.value == "关灯"){
+      document.body.style.backgroundColor = "#000";
+      btn.value = "开灯";
+      btn.style.color = "red";
+    }else {
+      document.body.style.backgroundColor = "#fff";
+      btn.value = "关灯";
+      btn.style.color = "#000";
+    }
+  };
+
+</script>
+
+</body>
+</html>

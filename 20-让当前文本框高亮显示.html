@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<input type="text"> <br>
+<input type="text"> <br>
+<input type="text"> <br>
+<input type="text"> <br>
+<input type="text"> <br>
+<input type="text"> <br>
+<input type="text"> <br>
+<input type="text"> <br>
+<input type="text"> <br>
+
+<script>
+
+  var inputs = document.getElementsByTagName("input");
+  for(var i = 0; i < inputs.length; i++){
+    inputs[i].onfocus = function () {
+      this.style.backgroundColor = "hotpink";
+    }
+
+    inputs[i].onblur = function () {
+      this.style.backgroundColor = "";
+    }
+  }
+</script>
+</body>
+</html>

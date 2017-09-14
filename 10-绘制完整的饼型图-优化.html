@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.width = 800;
+    cv.height = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+    var toRadian = function (angle) {
+      return angle / 180 * Math.PI;
+    };
+
+    var data = [{
+      'value': .1,          // 比例值（360 * 0.1）
+      'color': '#CCCC99',   // 颜色
+      'title': '社会招生'    // 描述文字 
+    }, {
+      'value': .1,
+      'color': '#CC3399',
+      'title': '公务员'
+    }, {
+      'value': .1,
+      'color': '#99CC00',
+      'title': '公开课'
+    }, {
+      'value': .1,
+      'color': '#FF6666',
+      'title': '前端'
+    }, {
+      'value': .2,
+      'color': '#CC0066',
+      'title': '应届生'
+    }, {
+      'value': .3,
+      'color': '#3399CC',
+      'title': '程序员'
+    }, {
+      'value': .1,
+      'color': '#CC6600',
+      'title': '老司机'
+    }];
+
+    var x = cv.width / 2,     // 圆心点 x 坐标
+      y = cv.height / 2,      // 圆心点 y 坐标
+      r = 200,                // 半径
+      startAngle = -90,       // 起始角度
+      step = 0,               // 每个扇形的角度
+      textSpaceX = 20,        // 文字前面的空白长度
+      textSpaceY = 10;        // 文字下面的空白长度
+
+    // 设置文字大小：
+    context.font = '26px sans-serif';
+
+    // 1 绘制圆饼：
+    data.forEach(function (val) {
+      // 清空路径
+      context.beginPath();
+
+      // 当前扇形的角度
+      step = val.value * 360;
+      // 设置颜色
+      context.fillStyle = val.color;
+
+      // 绘制圆弧：
+      context.moveTo(x, y);
+      context.arc(x, y, r, toRadian(startAngle), toRadian(startAngle + step));
+      context.fill();
+
+      // 绘制线对应的圆弧上的角度：
+      context.beginPath();
+
+      // 设置线的颜色
+      context.strokeStyle = val.color;
+
+      context.moveTo(x, y);
+      // 获取到要绘制的线的角度：
+      var lineAngle = startAngle + step / 2;
+      var lineX = x + (r + 30) * Math.cos(toRadian(lineAngle));
+      var lineY = y + (r + 30) * Math.sin(toRadian(lineAngle));
+      context.lineTo(lineX, lineY);
+
+      // 计算文字的宽度
+      var txtWidth = context.measureText(val.title).width;
+      var txtDir = '';
+
+      // 绘制文字：
+      // 绘制文字的底线
+      // 需要判断左右的两种方式：
+      // 1 根据当前角度，如果是 -90~90 说明是右边，否则在左边
+      // 2 根据 lineX 与 圆心点的x 坐标比较，如果 lineX >= x 说明是右边，否则是左边
+      if (lineX >= x) {
+        txtDir = 'left';
+      } else {
+        txtDir = 'right';
+        txtWidth = -txtWidth;
+        textSpaceX = -Math.abs(textSpaceX);
+      }
+
+      context.textAlign = txtDir;
+      context.lineTo(lineX + txtWidth + textSpaceX, lineY);
+      context.fillText(val.title, lineX + textSpaceX, lineY - textSpaceY);
+
+      context.stroke();
+
+      // 作用：下一次基于上一次的角度开始绘制
+      startAngle += step;
+    });
+  </script>
+</body>
+
+</html>

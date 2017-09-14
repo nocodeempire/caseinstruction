@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+  </style>
+</head>
+<body>
+
+<ul id="list">
+  <li>张学路</li>
+  <li>张清羽</li>
+  <li id="zff">张丰丰</li>
+  <li>韩思琪</li>
+</ul>
+
+<li id="ll">亮亮</li>
+
+<script>
+
+  var list = document.getElementById("list");
+  var ll = document.getElementById("ll");
+
+  var zff = document.getElementById("zff");
+
+  //第一个参数：需要添加的那个孩子
+  //第二个参数：参考的孩子， 添加到某个孩子前面
+
+  //通常都是加到最前面
+  //list.insertBefore(ll ,list.children[0]);
+  //list.insertBefore(ll, null); //appendChild
+
+</script>
+
+</body>
+</html>

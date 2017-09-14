@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+
+    // canvas中的绘图值基于状态绘图的!!!
+    // 也就是说: 只要前面设置了绘制状态( 比如: 颜色 )
+
+    // 左侧：
+    context.moveTo(100, 100);
+    context.lineTo(200, 100);
+    context.lineTo(200, 200);
+    context.lineTo(100, 200);
+    context.closePath();
+
+    // 改变绘制颜色的属性: 与 css中 color 的取值相同
+    // strokeStyle
+    // fillStyle
+
+    // context.strokeStyle = 'green';
+    // context.strokeStyle = '#f40';
+    // context.strokeStyle = 'rgb(255, 0, 0)';
+    // context.strokeStyle = 'rgba(255, 0, 0, 0.2)';
+    // context.stroke();
+
+    context.fillStyle='rgba(0, 255, 0, 0.4)';
+    
+    context.fill();
+
+    console.log(context);
+  </script>
+</body>
+
+</html>

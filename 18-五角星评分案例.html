@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>五角星评分案例</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+    
+    .comment {
+      font-size: 40px;
+      color: #ff16cf;
+    }
+    
+    .comment li {
+      float: left;
+    }
+    
+    ul {
+      list-style: none;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      var wjx_s = "★";
+      var wjx_k = "☆";
+      
+      var $li = $(".comment li");
+      //1. 给所有的li注册鼠标进入事件
+      $li.on("mouseenter", function () {
+        //让自己和前面所有的兄弟变成实心，，让后面所有的兄弟变成空心
+        
+        //不推荐这么玩
+        $(this).text(wjx_s).prevAll().text(wjx_s);
+        $(this).nextAll().text(wjx_k);
+      });
+      
+      //2. 离开comment全部变成空心
+      $(".comment").on("mouseleave", function () {
+        $li.text(wjx_k);
+        
+        //这里如何知道你点了谁
+        $(".now").text(wjx_s).prevAll().text(wjx_s);
+      });
+      
+      
+      //3. 给所有的li注册点击事件
+      $li.on("click", function () {
+        //留了一个标记
+        $(this).addClass("now").siblings().removeClass("now");
+      });
+    });
+  </script>
+
+
+</head>
+
+<body>
+<ul class="comment">
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+  <li>☆</li>
+</ul>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+      padding: 10px;
+      border: 10px solid black;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function(){
+    //val html text :传参数就设置  不传就获取
+    //css attr  : 传2个参数才设置 传一个参数就获取
+    //console.log($("div").css("width"));
+    //console.log($("div").width());
+    //console.log($("div").height());
+    //$("div").width(500);
+    
+    //console.log($(window).width());
+    //console.log($(window).height());
+  
+  
+    console.log($("div").width());//width
+    
+    
+    //下面几个方法，是只读的
+    //console.log($("div").innerWidth());//width + padding
+    //console.log($("div").outerWidth());//width + padding + border
+    //console.log($("div").outerWidth(true));//width + padding + border + margin
+  
+  
+  });
+</script>
+
+</body>
+</html>

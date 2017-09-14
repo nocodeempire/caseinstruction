@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 4000px;
+      width: 4000px;
+    }
+  </style>
+</head>
+<body>
+<script>
+  
+  document.onclick = function (e) {
+    e = e || window.event;
+    
+    //获取鼠标的位置，相对的是可视区最左上角的点。（忽略滚动的距离）
+    console.log(e.clientX + "=====" + e.clientY);
+    
+    //获取鼠标的位置，相对的页面最左上角的位置 （计算滚动的距离）
+    console.log(e.pageX + "=====" + e.pageY);
+    
+    //获取鼠标的位置，相对的是屏幕最左上角的那个点
+    console.log(e.screenX + "=====" + e.screenY);
+  }
+  
+</script>
+</body>
+</html>

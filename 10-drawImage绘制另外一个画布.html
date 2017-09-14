@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="cv"></canvas>
+
+  <script>
+    var cv = document.getElementById('cv');
+    cv.height = 400;
+    cv.width = 600;
+    cv.style.border = '1px solid red';
+
+    var context = cv.getContext('2d');
+    var toRadian = function (angle) {
+      return angle / 180 * Math.PI;
+    };
+
+    // 使用 drawImage 绘制另外一个画布：
+    // 1 创建一个跟当前canvas一样大的canvas
+    // 2 获取到这个新创建canvas的上下文对象
+    // 3 在新创建的canvas中绘制内容
+    // 4 将内容都绘制好以后，直接将新创建的canvas绘制到展示给用户看的canvas中
+
+    // 如果是需要在canvas画布中绘制大量的内容，可以通过这种方式来绘制
+    // 提高绘制性能！！！
+
+    var tempCanvas = document.createElement('canvas');
+    tempCanvas.width = cv.width;
+    tempCanvas.height = cv.height;
+
+    var tempCtx = tempCanvas.getContext('2d');
+    tempCtx.moveTo(100, 100);
+    tempCtx.lineTo(300, 100);
+    tempCtx.stroke();
+    tempCtx.fillRect(0, 0, 40, 50);
+    tempCtx.strokeText('这是文字', 400, 400);
+    
+    // 直接将隐藏的画布绘制到 展示给用户看的画布中：
+    context.drawImage(tempCanvas, 0, 0);
+  </script>
+</body>
+
+</html>

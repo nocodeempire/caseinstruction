@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    table {
+      margin: 50px auto;
+    }
+
+    td {
+      padding: 15px;
+      text-align: center;
+      /*border: 1px solid #000;*/
+    }
+
+    input {
+      width: 100px;
+      height: 40px;
+    }
+  </style>
+
+</head>
+
+<body>
+<input type="button" value="点名" id="btn">
+</body>
+
+<script>
+  //名单，@为空位，中间的@为过道。以@开头的为不随机的座位
+  var list = [
+    ["刘杰", "王俊吉", "汤龙萍", "胡聪聪", "@","@","@","@","@","@","@"],
+    ["俞赛松", "赵海燕", "贺洁", "赵军召", "王博扬", "@", "由思佳", "卢节响", "吴惜晨", "曾川", "孙俊"],
+    ["刑栋", "宋光耀", "万贤平", "耿昌彪", "王伟", "@", "王向阳", "石寒春", "姚云", "邹玉玲", "邹锐雪"],
+    ["杨南", "吴春洋", "王慧", "陈闯蒋", "石峰", "@", "李卓异", "朱晔雯", "蔡子奇", "@", "吕帅旗"],
+    ["黄国强", "冯经纬", "赵天宇", "许玉纯", "郑巍", "@", "张益全", "陈传炫", "徐朋", "雷坤", "宋天鹤"],
+    ["徐正鑫", "池述凡", "季尔洁", "彭飞", "郯俊卿", "@", "杨志豪", "黄杰", "刘曦", "韦晨光", "郑叶舟"],
+    ["蔡冉", "孟坤", "周智泉", "张清羽", "严少华", "@", "严国定", "曹成绍", "吴光飞", "赵宝云", "李兴华"],
+    ["余纯专", "谢成矩", "周武", "张丰丰", "朱北方", "@", "倪玉", "汪雪平", "杨超", "方立", "邓雅慧"],
+    ["丁春阳", "房媛媛", "翟家梅", "成中霞", "张勇", "@", "陆佳彬", "邵明", "毛赟义", "张学路", "陈开"],
+    ["葛腾飞", "程味", "许秀娟","@","@","@","@","@","@","@","@"]
+  ];
+
+  var btn = document.getElementById("btn");
+
+  var newArr = [];
+
+  //1. 创建table，添加到body
+  //1.1 创建标签
+  var table = document.createElement("table");
+  //1.2 添加到body
+  document.body.appendChild(table);
+
+  //1.3 设置内容 参照第二步
+
+  //2. 根据list的长度创建tr ， 添加到table中
+  for(var i = 0; i < list.length; i++) {
+    //2.1 创建标签
+    var tr = document.createElement("tr");
+    //2.2 添加到table
+    table.appendChild(tr);
+
+    //2.3 设置tr的内容 参照第三步
+    //3. list[i].length创建td， 添加到tr里面
+    for(var j = 0; j < list[i].length; j++) {
+      //3.1 创建td
+      var td = document.createElement("td");
+      //3.2 添加到tr
+      tr.appendChild(td);
+      //3.3 设置td的内容, 如果是@ ,不设置背景颜色和内容
+      if(list[i][j] != "@"){
+        td.innerHTML = list[i][j];
+        td.style.backgroundColor = "yellowgreen";
+
+//        if(list[i][j] == "胡聪聪"){
+//          continue;
+//        }
+        newArr.push(td);
+      }
+    }
+
+  }
+
+
+
+  //给按钮注册点击事件
+  btn.onclick = function () {
+    //干掉所有人
+    for(var i = 0; i < newArr.length; i++) {
+      newArr[i].style.backgroundColor = "yellowgreen";
+    }
+
+    var random = parseInt(Math.random() * newArr.length);
+    newArr[random].style.backgroundColor = "hotpink";
+  }
+
+
+</script>
+</html>
